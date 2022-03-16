@@ -1,2 +1,4 @@
-package com.tcc.sospets.business.models;public class Usuario {
+package com.tcc.sospets.business.models;
+
+public class Usuario {
 }
