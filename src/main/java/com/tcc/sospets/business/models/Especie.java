@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @NoArgsConstructor
 @Table(name = "Especies")
-public class Especies {
+public class Especie {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -24,5 +24,5 @@ public class Especies {
     @ToString.Exclude
     private String id_especie;
 
-    private String especies;
+    private String especie;
 }

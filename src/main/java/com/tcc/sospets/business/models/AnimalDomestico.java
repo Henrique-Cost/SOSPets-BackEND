@@ -23,6 +23,10 @@ public class AnimalDomestico {
 
     private Usuario usuario;
 
+    private RacaCachorro racaCachorro;
+
+    private Especie especie;
+
     private Float peso;
     private String Genero;
     private String acessorio;
