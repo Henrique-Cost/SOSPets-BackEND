@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
@@ -24,7 +21,9 @@ public class AnimalDomestico {
     @ToString.Exclude
     private String id_animalDomestico;
 
-    private float peso;
+    private Usuario usuario;
+
+    private Float peso;
     private String Genero;
     private String acessorio;
     private String condicaoAnimal;
