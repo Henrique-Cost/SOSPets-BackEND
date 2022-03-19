@@ -21,18 +21,20 @@ public class AnimalDomestico {
     @ToString.Exclude
     private String id_animalDomestico;
 
-    private Usuario usuario;
 
-    private RacaCachorro racaCachorro;
+    @JoinColumn(name = "Usuario", referencedColumnName = "id_usuario")
+    private String id_usuario;
 
-    private Especie especie;
+    @JoinColumn(name = "Racas_Cachorro", referencedColumnName = "id_racaCachorro")
+    private String id_racaCachorro;
+
+    @JoinColumn(name = "Especies", referencedColumnName = "id_especie")
+    private String id_especie;
 
     private Float peso;
     private String Genero;
     private String acessorio;
     private String condicaoAnimal;
     private String localizacao;
-    private String tipoUsuario;
-    private String cor;
     private String fotoAnimal;
 }

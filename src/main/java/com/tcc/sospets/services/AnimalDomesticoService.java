@@ -30,8 +30,6 @@ public class AnimalDomesticoService implements IAnimalDomesticoService{
         animalAnterior.setAcessorio(animalDomestico.getAcessorio());
         animalAnterior.setCondicaoAnimal(animalDomestico.getCondicaoAnimal());
         animalAnterior.setLocalizacao(animalDomestico.getLocalizacao());
-        animalAnterior.setTipoUsuario(animalDomestico.getTipoUsuario());
-        animalAnterior.setCor(animalDomestico.getCor());
         animalAnterior.setFotoAnimal(animalDomestico.getFotoAnimal());
         animalDomesticoRepositorio.save(animalAnterior);
     }
