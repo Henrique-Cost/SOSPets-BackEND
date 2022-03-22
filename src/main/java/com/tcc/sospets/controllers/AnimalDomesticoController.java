@@ -59,11 +59,4 @@ public class AnimalDomesticoController {
 
         Path filename = Paths.get("uploads").resolve(fotoAnimal);
     }
-
-
-
-
-
-
-
 }

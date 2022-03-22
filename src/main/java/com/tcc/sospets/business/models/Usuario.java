@@ -25,5 +25,4 @@ public class Usuario {
     private String telefone;
     private String senha;
     private String tipo;
-
 }
