@@ -32,7 +32,11 @@ public class UsuarioService implements IUsuarioService{
     @Override
     public void atualizaUsuario(Usuario usuario, String id_usuario) {
         Usuario usuarioAnterior = usuarioRepositorio.findById(id_usuario).orElse(null);
-        usuarioAnterior.setId_usuario(usuario.getId_usuario());
+        usuarioAnterior.setNomeCompleto(usuario.getNomeCompleto());
+        usuarioAnterior.setEmail(usuario.getEmail());
+        usuarioAnterior.setSenha(usuario.getSenha());
+        usuarioAnterior.setTelefone(usuario.getTelefone());
+        usuarioAnterior.setTipo(usuario.getTipo());
         usuarioRepositorio.save(usuarioAnterior);
     }
 
