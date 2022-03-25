@@ -15,7 +15,7 @@ public class ContatoController {
     ContatoService contatoService;
 
     @GetMapping
-    public List<Contato> getContato() { return contatoService.getContato(); }
+    public List<Contato> getContato() { return contatoService.getContatos(); }
 
     @PostMapping
     public void saveContato (@RequestBody Contato contato){

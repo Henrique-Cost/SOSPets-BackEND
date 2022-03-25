@@ -8,22 +8,23 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "contato")
-public class Contato {
+@Entity
+@Table(name = "tipo_usuario")
+public class TipoUsuarioClasse {
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    private String id_contato;
+    private String id_tipo_usuario;
 
     @JoinColumn(name = "usuario", referencedColumnName = "id_usuario")
     private String id_usuario;
 
-    private String telefone;
+    private String tipo_usuario;
+
 
 }

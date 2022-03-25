@@ -3,11 +3,13 @@ package com.tcc.sospets.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcc.sospets.business.models.AnimalDomestico;
 import com.tcc.sospets.services.IAnimalDomesticoService;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -58,5 +60,15 @@ public class AnimalDomesticoController {
         animalDomesticoService.saveAnimal(novoAnimal);
 
         Path filename = Paths.get("uploads").resolve(fotoAnimal);
+
+        Path thumbFilename = Paths.get("uploads").resolve("thumb_" + fotoAnimal);
+        Thumbnails.of(file.getInputStream())
+                .size(500, 500)
+                .outputFormat("jpg")
+                .toFile(new File(filename.toString()));
+        Thumbnails.of(file.getInputStream())
+                .size(100, 100)
+                .outputFormat("jpg")
+                .toFile(new File(thumbFilename.toString()));
     }
 }

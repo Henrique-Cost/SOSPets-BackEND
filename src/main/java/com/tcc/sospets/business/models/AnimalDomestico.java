@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
-@Table(name = "Animal_Domestico")
+@Table(name = "animal_Domestico")
 public class AnimalDomestico {
 
     @Id
@@ -22,14 +22,19 @@ public class AnimalDomestico {
     private String id_animalDomestico;
 
 
-    @JoinColumn(name = "Usuario", referencedColumnName = "id_usuario")
+    @JoinColumn(name = "usuario", referencedColumnName = "id_usuario")
     private String id_usuario;
 
-    @JoinColumn(name = "Racas_Cachorro", referencedColumnName = "id_racaCachorro")
+    @JoinColumn(name = "uacas_Cachorro", referencedColumnName = "id_racaCachorro")
     private String id_racaCachorro;
 
-    @JoinColumn(name = "Especies", referencedColumnName = "id_especie")
+    @JoinColumn(name = "especie", referencedColumnName = "id_especie")
     private String id_especie;
+
+    @JoinColumn(name = "cores", referencedColumnName = "id_cor")
+    private String id_cor;
+
+    @JoinColumn(name = "")
 
     private Float peso;
     private String Genero;

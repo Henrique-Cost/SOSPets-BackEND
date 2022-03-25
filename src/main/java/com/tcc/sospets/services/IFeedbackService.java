@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IFeedbackService {
 
-    List<Feedback> getFeedback();
+    List<Feedback> getFeedbacks();
 
     Feedback pegaFeedback(String id_feedback);
 

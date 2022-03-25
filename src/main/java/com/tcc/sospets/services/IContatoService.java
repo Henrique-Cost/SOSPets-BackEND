@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IContatoService {
 
-    List<Contato> getContato();
+    List<Contato> getContatos();
 
     Contato pegaContato(String id_contato);
 

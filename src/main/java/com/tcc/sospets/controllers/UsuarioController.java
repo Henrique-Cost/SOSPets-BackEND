@@ -25,7 +25,7 @@ public class UsuarioController {
     UsuarioService usuarioServiceService;
 
     @GetMapping
-    public List<Usuario> getUsuario() { return usuarioServiceService.getUsuario(); }
+    public List<Usuario> getUsuario() { return usuarioServiceService.getUsuarios(); }
 
     @PostMapping
     public void saveUsuario (@RequestBody Usuario usuario){

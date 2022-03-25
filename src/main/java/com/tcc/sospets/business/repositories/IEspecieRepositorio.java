@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IEspecieRepositorio extends JpaRepository<Especie, String> {
 
-    List<Especie> findByEspecie(String especie);
+    List<Especie> findByEspecie(Especie especie);
 }

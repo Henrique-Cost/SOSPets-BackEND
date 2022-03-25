@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Feedback")
+@Table(name = "feedback")
 public class Feedback {
 
     @Id
@@ -21,7 +21,7 @@ public class Feedback {
     @ToString.Exclude
     private String id_feedback;
 
-    @JoinColumn(name = "Usuario", referencedColumnName = "id_usuario")
+    @JoinColumn(name = "usuario", referencedColumnName = "id_usuario")
     private String id_usuario;
 
     private String feedback;

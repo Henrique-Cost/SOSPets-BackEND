@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IRacaCachorroService {
 
-    List<RacaCachorro> getRacasCachorro();
+    List<RacaCachorro> getRacasCachorros();
 
     RacaCachorro pegaRacaCachorro(String id_racaCachorro);
 

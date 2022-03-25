@@ -15,7 +15,7 @@ public class FeedbackController {
     FeedbackService feedbackService;
 
     @GetMapping
-    public List<Feedback> getFeedback() { return feedbackService.getFeedback(); }
+    public List<Feedback> getFeedback() { return feedbackService.getFeedbacks(); }
 
     @PostMapping
     public void saveFeedback (@RequestBody Feedback feedback){

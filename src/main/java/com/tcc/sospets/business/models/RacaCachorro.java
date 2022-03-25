@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Racas_Cachorro")
+@Table(name = "racas_Cachorro")
 public class RacaCachorro {
 
     @Id
@@ -21,7 +21,7 @@ public class RacaCachorro {
     @ToString.Exclude
     private String id_racaCachorro;
 
-    @JoinColumn(name = "Especies", referencedColumnName = "id_especie")
+    @JoinColumn(name = "especie", referencedColumnName = "id_especie")
     private String id_especie;
 
     private String raca;

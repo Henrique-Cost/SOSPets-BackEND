@@ -6,24 +6,24 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "contato")
-public class Contato {
+@Entity
+@Table(name = "cores")
+public class CorAnimal {
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    private String id_contato;
+    private String id_cor;
 
-    @JoinColumn(name = "usuario", referencedColumnName = "id_usuario")
-    private String id_usuario;
-
-    private String telefone;
-
+    private String cor;
+    private String outros;
 }

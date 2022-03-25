@@ -3,16 +3,18 @@ package com.tcc.sospets.services;
 import com.tcc.sospets.business.models.RacaCachorro;
 import com.tcc.sospets.business.repositories.IRacaCachorroRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class RacaCachorroService implements IRacaCachorroService{
 
     @Autowired
     IRacaCachorroRepositorio racaCachorroRepositorio;
 
     @Override
-    public List<RacaCachorro> getRacasCachorro() {
+    public List<RacaCachorro> getRacasCachorros() {
         return racaCachorroRepositorio.findAll();
     }
 
