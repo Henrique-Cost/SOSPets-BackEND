@@ -37,7 +37,7 @@ public class ContatoService implements  IContatoService{
     }
 
     @Override
-    public void deletaContato(Contato id_contato) {
-        contatoRepositorio.deleteById(String.valueOf(id_contato));
+    public void deletaContato(String id_contato) {
+        contatoRepositorio.deleteById(id_contato);
     }
 }

@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/id_feedback")
+@RequestMapping("/feedback")
 public class FeedbackController {
 
     @Autowired
     FeedbackService feedbackService;
 
     @GetMapping
-    public List<Feedback> getFeedback() { return feedbackService.getFeedbacks(); }
+    public List<Feedback> getFeedbacks() { return feedbackService.getFeedbacks(); }
 
     @PostMapping
     public void saveFeedback (@RequestBody Feedback feedback){
@@ -33,7 +33,7 @@ public class FeedbackController {
     }
 
     @DeleteMapping("/{id_feedback}")
-    public void deletaFeedback(@PathVariable("id_feedback") Feedback id_feedback){
-        feedbackService.deletaFeedback(String.valueOf(id_feedback));
+    public void deletaFeedback(@PathVariable("id_feedback") String id_feedback){
+        feedbackService.deletaFeedback(id_feedback);
     }
 }

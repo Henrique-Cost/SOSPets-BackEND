@@ -14,5 +14,5 @@ public interface IContatoService {
 
     void atualizaContato(Contato contato, String id_contato);
 
-    void deletaContato(Contato id_contato);
+    void deletaContato(String id_contato);
 }
