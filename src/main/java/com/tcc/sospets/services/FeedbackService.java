@@ -4,16 +4,18 @@ import com.tcc.sospets.business.models.Especie;
 import com.tcc.sospets.business.models.Feedback;
 import com.tcc.sospets.business.repositories.IFeedbackRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class FeedbackService implements IFeedbackService {
 
     @Autowired
     IFeedbackRepositorio feedbackRepositorio;
 
     @Override
-    public List<Feedback> getFeedback() {
+    public List<Feedback> getFeedbacks() {
         return feedbackRepositorio.findAll();
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 public interface IUsuarioService {
 
 
-    List<Usuario> getUsuario();
+    List<Usuario> getUsuarios();
 
     Usuario pegaUsuario(String id_usuario);
 

@@ -4,9 +4,11 @@ import com.tcc.sospets.business.models.Especie;
 import com.tcc.sospets.business.models.Usuario;
 import com.tcc.sospets.business.repositories.IUsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UsuarioService implements IUsuarioService{
 
 
@@ -14,7 +16,7 @@ public class UsuarioService implements IUsuarioService{
     IUsuarioRepositorio usuarioRepositorio;
 
 
-    public List<Usuario> getUsuario() {
+    public List<Usuario> getUsuarios() {
         return usuarioRepositorio.findAll();
     }
 

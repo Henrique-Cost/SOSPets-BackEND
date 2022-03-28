@@ -3,9 +3,11 @@ package com.tcc.sospets.services;
 import com.tcc.sospets.business.models.Especie;
 import com.tcc.sospets.business.repositories.IEspecieRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class EspecieService implements IEspecieService {
 
     @Autowired
@@ -32,6 +34,7 @@ public class EspecieService implements IEspecieService {
     public void atualizaEspecie(Especie especie, String id_especie) {
         Especie especieAnterior = especieRepositorio.findById(id_especie).orElse(null);
         especieAnterior.setEspecie(especie.getEspecie());
+        especieAnterior.setOutros(especie.getOutros());
         especieRepositorio.save(especieAnterior);
     }
 

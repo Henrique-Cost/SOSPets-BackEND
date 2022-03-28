@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
-@Table(name = "Especies")
+@Table(name = "especies")
 public class Especie {
 
     @Id
@@ -25,4 +25,5 @@ public class Especie {
     private String id_especie;
 
     private String especie;
+    private String outros;
 }

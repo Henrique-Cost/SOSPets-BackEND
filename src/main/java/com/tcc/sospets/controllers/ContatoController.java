@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/id_contato")
+@RequestMapping("/contato")
 public class ContatoController {
 
     @Autowired
     ContatoService contatoService;
 
     @GetMapping
-    public List<Contato> getContato() { return contatoService.getContato(); }
+    public List<Contato> getContatos() {
+        return contatoService.getContatos();
+    }
 
     @PostMapping
     public void saveContato (@RequestBody Contato contato){
@@ -33,7 +35,7 @@ public class ContatoController {
     }
 
     @DeleteMapping("/{id_contato}")
-    public void deletaUsuario(@PathVariable("id_contato") Contato id_contato){
+    public void deletaUsuario(@PathVariable("id_contato") String id_contato){
         contatoService.deletaContato(id_contato);
     }
 

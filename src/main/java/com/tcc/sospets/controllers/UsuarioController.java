@@ -18,33 +18,33 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/id_usuario")
+@RequestMapping("/usuario")
 public class UsuarioController {
 
     @Autowired
-    UsuarioService usuarioServiceService;
+    UsuarioService usuarioService;
 
     @GetMapping
-    public List<Usuario> getUsuario() { return usuarioServiceService.getUsuario(); }
+    public List<Usuario> getUsuario() { return usuarioService.getUsuarios(); }
 
     @PostMapping
     public void saveUsuario (@RequestBody Usuario usuario){
-        usuarioServiceService.saveUsuario(usuario);
+        usuarioService.saveUsuario(usuario);
     }
 
     @GetMapping("/{id_usuario}")
     public Usuario pegaUsuario(@PathVariable("id_usuario") String id_usuario){
-        return usuarioServiceService.pegaUsuario(id_usuario);
+        return usuarioService.pegaUsuario(id_usuario);
     }
 
     @PutMapping("/{id_usuario}")
     public void atualizaUsuario(@PathVariable("id_usuario") String id_usuario, @RequestBody Usuario usuario){
-        usuarioServiceService.atualizaUsuario(usuario, id_usuario);
+        usuarioService.atualizaUsuario(usuario, id_usuario);
     }
 
     @DeleteMapping("/{id_usuario}")
     public void deletaUsuario(@PathVariable("id_usuario") String id_usuario){
-        usuarioServiceService.deletaUsuario(id_usuario);
+        usuarioService.deletaUsuario(id_usuario);
     }
 
 }

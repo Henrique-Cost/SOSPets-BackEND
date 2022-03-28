@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IContatoService {
 
-    List<Contato> getContato();
+    List<Contato> getContatos();
 
     Contato pegaContato(String id_contato);
 
@@ -14,5 +14,5 @@ public interface IContatoService {
 
     void atualizaContato(Contato contato, String id_contato);
 
-    void deletaContato(Contato id_contato);
+    void deletaContato(String id_contato);
 }

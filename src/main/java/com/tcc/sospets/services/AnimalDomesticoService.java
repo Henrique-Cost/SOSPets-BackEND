@@ -3,9 +3,11 @@ package com.tcc.sospets.services;
 import com.tcc.sospets.business.models.AnimalDomestico;
 import com.tcc.sospets.business.repositories.IAnimalDomesticoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AnimalDomesticoService implements IAnimalDomesticoService{
 
     @Autowired

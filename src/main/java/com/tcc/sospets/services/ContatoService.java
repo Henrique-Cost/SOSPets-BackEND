@@ -4,16 +4,18 @@ import com.tcc.sospets.business.models.Contato;
 import com.tcc.sospets.business.models.Usuario;
 import com.tcc.sospets.business.repositories.IContatoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ContatoService implements  IContatoService{
 
     @Autowired
     IContatoRepositorio contatoRepositorio;
 
     @Override
-    public List<Contato> getContato() {return contatoRepositorio.findAll();
+    public List<Contato> getContatos() {return contatoRepositorio.findAll();
     }
 
     @Override
@@ -23,7 +25,9 @@ public class ContatoService implements  IContatoService{
     }
 
     @Override
-    public void saveContato(Contato contato) { contatoRepositorio.save(contato);}
+    public void saveContato(Contato contato) {
+        contatoRepositorio.save(contato);
+    }
 
     @Override
     public void atualizaContato(Contato contato, String id_contato) {
@@ -33,7 +37,7 @@ public class ContatoService implements  IContatoService{
     }
 
     @Override
-    public void deletaContato(Contato id_contato) {
-        contatoRepositorio.deleteById(String.valueOf(id_contato));
+    public void deletaContato(String id_contato) {
+        contatoRepositorio.deleteById(id_contato);
     }
 }
