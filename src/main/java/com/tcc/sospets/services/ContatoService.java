@@ -28,7 +28,7 @@ public class ContatoService implements  IContatoService{
     @Override
     public void atualizaContato(Contato contato, String id_contato) {
         Contato contatoAnterior = contatoRepositorio.findById(id_contato).orElse(null);
-        contatoAnterior.setId_contato(contato.getId_usuario());
+        contatoAnterior.setTelefone(contato.getTelefone());
         contatoRepositorio.save(contatoAnterior);
     }
 

@@ -29,7 +29,7 @@ public class FeedbackService implements IFeedbackService {
     @Override
     public void atualizaFeedback(Feedback feedback, String id_feedback) {
         Feedback feedbackAnterior = feedbackRepositorio.findById(id_feedback).orElse(null);
-        feedbackAnterior.setId_feedback(feedback.getId_usuario());
+        feedbackAnterior.setFeedback(feedback.getFeedback());
         feedbackRepositorio.save(feedback);
     }
 
