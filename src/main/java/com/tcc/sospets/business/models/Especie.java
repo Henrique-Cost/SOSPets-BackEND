@@ -3,27 +3,27 @@ package com.tcc.sospets.business.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-//import MyFirebaseServiceImpl;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
-@Table(name = "usuario")
-public class Usuario {
+@Table(name = "especies")
+public class Especie {
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    private String id_usuario;
+    private String id_especie;
 
-    private String nomeCompleto;
-    private String email;
-    private String telefone;
-    private String senha;
-    private String tipo;
+    private String especie;
+    private String outros;
 }
