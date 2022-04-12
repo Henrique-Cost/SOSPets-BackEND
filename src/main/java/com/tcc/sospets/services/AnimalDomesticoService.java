@@ -25,7 +25,6 @@ public class AnimalDomesticoService implements IAnimalDomesticoService{
 
     @Override
     public void atualizaAnimal(AnimalDomestico animalDomestico, String id_animalDomestico) {
-
         AnimalDomestico animalAnterior = animalDomesticoRepositorio.findById(id_animalDomestico).orElse(null);
         animalAnterior.setPeso(animalDomestico.getPeso());
         animalAnterior.setGenero(animalDomestico.getGenero());
