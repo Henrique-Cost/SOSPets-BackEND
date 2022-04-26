@@ -1,4 +1,4 @@
-package com.tcc.sospets.controllers.imageControllers;
+package com.tcc.sospets.controllers.ImagesControllers;
 
 
 import org.apache.commons.io.FileUtils;

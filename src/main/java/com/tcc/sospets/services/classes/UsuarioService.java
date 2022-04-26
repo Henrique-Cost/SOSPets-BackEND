@@ -43,4 +43,3 @@ public class UsuarioService implements IUsuarioService {
         usuarioRepositorio.deleteById(usuarioId);
     }
 }
-
