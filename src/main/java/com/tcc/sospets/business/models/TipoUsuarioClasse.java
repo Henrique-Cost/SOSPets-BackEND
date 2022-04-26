@@ -18,9 +18,9 @@ public class TipoUsuarioClasse {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    private String id_tipo_usuario;
+    private String tipoUsuarioId;
 
-    private String tipo_usuario;
+    private String tipoDoUsuario;
 
 
 }
