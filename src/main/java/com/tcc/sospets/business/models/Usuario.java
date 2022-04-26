@@ -19,9 +19,10 @@ public class Usuario {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    private String id_usuario;
+    private String usuarioId;
 
-    @Embedded
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipoUsuarioId")
     private TipoUsuarioClasse tipoUsuarioClasse;
 
     @Embedded

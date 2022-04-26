@@ -14,15 +14,15 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "feedback")
 public class Feedback {
-
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    private String id_feedback;
+    private String feedbackId;
 
-    @JoinColumn(name = "usuario", referencedColumnName = "id_usuario")
-    private String id_usuario;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuarioId")
+    private Usuario usuario;
 
     private String feedback;
 

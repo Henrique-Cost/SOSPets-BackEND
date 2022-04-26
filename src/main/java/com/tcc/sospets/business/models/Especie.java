@@ -19,7 +19,7 @@ public class Especie {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    private String id_especie;
+    private String especieId;
 
     @Embedded
     private RacaCachorro racaCachorro;
