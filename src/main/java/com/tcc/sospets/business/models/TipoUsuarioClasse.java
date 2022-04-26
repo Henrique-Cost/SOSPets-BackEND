@@ -8,8 +8,17 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Embeddable
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "tipo_usuario")
 public class TipoUsuarioClasse {
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @ToString.Exclude
+    private String id_tipo_usuario;
 
     private String tipo_usuario;
 
