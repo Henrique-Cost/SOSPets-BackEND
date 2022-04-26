@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
@@ -23,6 +20,9 @@ public class Especie {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
     private String id_especie;
+
+    @Embedded
+    private RacaCachorro racaCachorro;
 
     private String especie;
     private String outros;

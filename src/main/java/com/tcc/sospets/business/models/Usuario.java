@@ -21,6 +21,12 @@ public class Usuario {
     @ToString.Exclude
     private String id_usuario;
 
+    @Embedded
+    private TipoUsuarioClasse tipoUsuarioClasse;
+
+    @Embedded
+    private Contato contato;
+
     private String nomeCompleto;
     private String email;
     private String telefone;

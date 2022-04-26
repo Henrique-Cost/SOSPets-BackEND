@@ -8,21 +8,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "racas_cachorro")
+@Embeddable
 public class RacaCachorro {
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @ToString.Exclude
-    private String id_racaCachorro;
-
-    @JoinColumn(name = "especie", referencedColumnName = "id_especie")
-    private String id_especie;
 
     private String raca;
     private String FotoUrl;

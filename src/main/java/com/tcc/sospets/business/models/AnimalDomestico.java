@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 
@@ -22,17 +23,17 @@ public class AnimalDomestico {
     private String id_animalDomestico;
 
 
-    @JoinColumn(name = "usuario", referencedColumnName = "id_usuario")
-    private String id_usuario;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario usuario;
 
-    @JoinColumn(name = "uacas_Cachorro", referencedColumnName = "id_racaCachorro")
-    private String id_racaCachorro;
 
-    @JoinColumn(name = "especie", referencedColumnName = "id_especie")
-    private String id_especie;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_especie", nullable = false)
+    private Especie especie;
 
-    @JoinColumn(name = "cores", referencedColumnName = "id_cor")
-    private String id_cor;
+    @Embedded
+    private CorAnimal corAnimal;
 
     @JoinColumn(name = "tipo_usuario", referencedColumnName = "id_tipo_usuario")
     private String id_tipo_usuario;
