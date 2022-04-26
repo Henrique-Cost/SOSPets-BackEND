@@ -24,6 +24,6 @@ public class Especie {
     @ToString.Exclude
     private String id_especie;
 
-    private String especie;
+    private String especies;
     private String outros;
 }

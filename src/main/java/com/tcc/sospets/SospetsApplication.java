@@ -14,11 +14,11 @@ public class SospetsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SospetsApplication.class, args);
 
-		try {
-			Files.createDirectory(Paths.get("uploads"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		//try {
+		// 	Files.createDirectory(Paths.get("uploads"));
+		//} catch (IOException e) {
+		//	e.printStackTrace();
+		//}
 	}
 
 }

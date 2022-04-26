@@ -25,7 +25,7 @@ public class AnimalDomestico {
     @JoinColumn(name = "usuario", referencedColumnName = "id_usuario")
     private String id_usuario;
 
-    @JoinColumn(name = "uacas_Cachorro", referencedColumnName = "id_racaCachorro")
+    @JoinColumn(name = "racas_Cachorro", referencedColumnName = "id_racaCachorro")
     private String id_racaCachorro;
 
     @JoinColumn(name = "especie", referencedColumnName = "id_especie")
