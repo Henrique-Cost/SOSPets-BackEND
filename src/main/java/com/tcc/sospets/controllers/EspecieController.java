@@ -1,7 +1,7 @@
 package com.tcc.sospets.controllers;
 
 import com.tcc.sospets.business.models.entities.Especie;
-import com.tcc.sospets.services.classes.EspecieService;
+import com.tcc.sospets.business.models.dto.classes.EspecieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

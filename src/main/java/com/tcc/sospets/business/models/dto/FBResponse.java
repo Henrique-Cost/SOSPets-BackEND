@@ -1,4 +1,4 @@
-package com.tcc.sospets.Firebase;
+package com.tcc.sospets.business.models.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

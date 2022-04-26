@@ -20,10 +20,12 @@ public class AnimalDomestico {
     @ToString.Exclude
     private String animalDomesticoId;
 
+    //
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuarioId", nullable = false)
     private Usuario usuario;
 
+    //
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "especieId", nullable = false)
     private Especie especie;
@@ -31,6 +33,7 @@ public class AnimalDomestico {
     @Embedded
     private CorAnimal corAnimal;
 
+    //
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "tipoUsuarioId", nullable = false)
     private TipoUsuarioClasse tipoUsuarioClasse;
