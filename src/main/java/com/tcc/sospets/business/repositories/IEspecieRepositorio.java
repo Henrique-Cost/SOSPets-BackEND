@@ -1,6 +1,6 @@
 package com.tcc.sospets.business.repositories;
 
-import com.tcc.sospets.business.models.Especie;
+import com.tcc.sospets.business.models.entities.Especie;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

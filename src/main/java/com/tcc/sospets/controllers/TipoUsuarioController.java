@@ -1,7 +1,7 @@
 package com.tcc.sospets.controllers;
 
-import com.tcc.sospets.business.models.TipoUsuarioClasse;
-import com.tcc.sospets.services.TipoUsuarioService;
+import com.tcc.sospets.business.models.entities.TipoUsuarioClasse;
+import com.tcc.sospets.services.classes.TipoUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,23 +19,23 @@ public class TipoUsuarioController {
         return tipoUsuarioService.getTiposUsuarios();
     }
 
-    @GetMapping("/{id_tipo_usuario}")
-    public TipoUsuarioClasse pegaTipoUsuario(@PathVariable("id_tipo_usuario") String id_tipo_usuario){
-        return tipoUsuarioService.pegaTipoUsuario(id_tipo_usuario);
+    @GetMapping("/{tipoUsuarioId}")
+    public TipoUsuarioClasse pegaTipoUsuario(@PathVariable("tipoUsuarioId") String tipoUsuarioId){
+        return tipoUsuarioService.pegaTipoUsuario(tipoUsuarioId);
     }
 
-    @PostMapping("/{id_tipo_usuario}")
+    @PostMapping("/{tipoUsuarioId}")
     public void saveTipoUsuario(@RequestBody TipoUsuarioClasse tipoUsuarioClasse){
         tipoUsuarioService.saveTipoUsuario(tipoUsuarioClasse);
     }
 
-    @PutMapping("/{id_tipo_usuario}")
-    public void atualizaTipoUsuario(@PathVariable("id_tipo_usuario") String id_tipo_usuario, @RequestBody TipoUsuarioClasse tipoUsuarioClasse){
-        tipoUsuarioService.atualizaTipoUsuario(tipoUsuarioClasse, id_tipo_usuario);
+    @PutMapping("/{tipoUsuarioId}")
+    public void atualizaTipoUsuario(@PathVariable("tipoUsuarioId") String tipoUsuarioId, @RequestBody TipoUsuarioClasse tipoUsuarioClasse){
+        tipoUsuarioService.atualizaTipoUsuario(tipoUsuarioClasse, tipoUsuarioId);
     }
 
-    @DeleteMapping("/{id_tipo_usuario}")
-    public void deletaTipoUsuario(@PathVariable("id_tipo_usuario") String id_tipo_usuario){
-        tipoUsuarioService.deletaTipoUsuario(id_tipo_usuario);
+    @DeleteMapping("/{tipoUsuarioId}")
+    public void deletaTipoUsuario(@PathVariable("tipoUsuarioId") String tipoUsuarioId){
+        tipoUsuarioService.deletaTipoUsuario(tipoUsuarioId);
     }
 }

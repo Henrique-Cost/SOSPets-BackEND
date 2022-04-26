@@ -1,7 +1,8 @@
-package com.tcc.sospets.services;
+package com.tcc.sospets.services.classes;
 
-import com.tcc.sospets.business.models.Especie;
+import com.tcc.sospets.business.models.entities.Especie;
 import com.tcc.sospets.business.repositories.IEspecieRepositorio;
+import com.tcc.sospets.services.interfaces.IEspecieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,8 @@ public class EspecieService implements IEspecieService {
     }
 
     @Override
-    public Especie pegaEspecie(String id_especie) {
-        Especie especie = especieRepositorio.findById(id_especie).orElse(null);
+    public Especie pegaEspecie(String especieId) {
+        Especie especie = especieRepositorio.findById(especieId).orElse(null);
         return especie;
     }
 
@@ -31,15 +32,15 @@ public class EspecieService implements IEspecieService {
     }
 
     @Override
-    public void atualizaEspecie(Especie especie, String id_especie) {
-        Especie especieAnterior = especieRepositorio.findById(id_especie).orElse(null);
+    public void atualizaEspecie(Especie especie, String especieId) {
+        Especie especieAnterior = especieRepositorio.findById(especieId).orElse(null);
         especieAnterior.setEspecie(especie.getEspecie());
         especieAnterior.setOutros(especie.getOutros());
         especieRepositorio.save(especieAnterior);
     }
 
     @Override
-    public void deletaEspecie(String id_especie) {
-        especieRepositorio.deleteById(id_especie);
+    public void deletaEspecie(String especieId) {
+        especieRepositorio.deleteById(especieId);
     }
 }

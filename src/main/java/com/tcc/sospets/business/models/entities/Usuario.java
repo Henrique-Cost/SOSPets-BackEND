@@ -1,4 +1,4 @@
-package com.tcc.sospets.business.models;
+package com.tcc.sospets.business.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

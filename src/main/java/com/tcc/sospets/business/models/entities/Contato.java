@@ -1,4 +1,4 @@
-package com.tcc.sospets.business.models;
+package com.tcc.sospets.business.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,8 +9,10 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Embeddable
-public class RacaCachorro {
+public class Contato {
 
-    private String raca;
-    private String FotoUrl;
+    private String telefone;
+    private String celular;
+    private String emailAlt;
+
 }

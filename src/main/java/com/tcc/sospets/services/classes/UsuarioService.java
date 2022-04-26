@@ -1,15 +1,15 @@
-package com.tcc.sospets.services;
+package com.tcc.sospets.services.classes;
 
-import com.tcc.sospets.business.models.Especie;
-import com.tcc.sospets.business.models.Usuario;
+import com.tcc.sospets.business.models.entities.Usuario;
 import com.tcc.sospets.business.repositories.IUsuarioRepositorio;
+import com.tcc.sospets.services.interfaces.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UsuarioService implements IUsuarioService{
+public class UsuarioService implements IUsuarioService {
 
 
     @Autowired
@@ -21,8 +21,8 @@ public class UsuarioService implements IUsuarioService{
     }
 
     @Override
-    public Usuario pegaUsuario(String id_usuario) {
-        Usuario usuario = usuarioRepositorio.findById(id_usuario).orElse(null);
+    public Usuario pegaUsuario(String usuarioId) {
+        Usuario usuario = usuarioRepositorio.findById(usuarioId).orElse(null);
         return usuario;
     }
 
@@ -32,8 +32,8 @@ public class UsuarioService implements IUsuarioService{
     }
 
     @Override
-    public void atualizaUsuario(Usuario usuario, String id_usuario) {
-        Usuario usuarioAnterior = usuarioRepositorio.findById(id_usuario).orElse(null);
+    public void atualizaUsuario(Usuario usuario, String usuarioId) {
+        Usuario usuarioAnterior = usuarioRepositorio.findById(usuarioId).orElse(null);
         usuarioAnterior.setNomeCompleto(usuario.getNomeCompleto());
         usuarioAnterior.setEmail(usuario.getEmail());
         usuarioAnterior.setSenha(usuario.getSenha());
@@ -43,8 +43,8 @@ public class UsuarioService implements IUsuarioService{
     }
 
     @Override
-    public void deletaUsuario(String id_usuario) {
-        usuarioRepositorio.deleteById(id_usuario);
+    public void deletaUsuario(String usuarioId) {
+        usuarioRepositorio.deleteById(usuarioId);
     }
 }
 
