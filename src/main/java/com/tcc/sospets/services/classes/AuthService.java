@@ -1,10 +1,11 @@
-package com.tcc.sospets.services;
+package com.tcc.sospets.services.classes;
 
 import com.tcc.sospets.Firebase.MyFirebaseServiceImpl;
+import com.tcc.sospets.services.interfaces.IAuthService;
 
 import java.util.List;
 
-public class AuthService implements IAuthService{
+public class AuthService implements IAuthService {
 
     MyFirebaseServiceImpl firebase = new MyFirebaseServiceImpl();
     @Override

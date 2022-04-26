@@ -1,4 +1,4 @@
-package com.tcc.sospets.services;
+package com.tcc.sospets.services.interfaces;
 
 import java.util.List;
 

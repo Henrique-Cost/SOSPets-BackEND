@@ -1,9 +1,9 @@
 package com.tcc.sospets.business.repositories;
 
-import com.tcc.sospets.business.models.AnimalDomestico;
+import com.tcc.sospets.business.models.entities.AnimalDomestico;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+@Repository
 public interface IAnimalDomesticoRepositorio extends JpaRepository<AnimalDomestico, String>{
 }

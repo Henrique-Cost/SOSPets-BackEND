@@ -1,4 +1,4 @@
-package com.tcc.sospets.business.models;
+package com.tcc.sospets.business.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,22 +8,22 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Entity
 @Data
 @AllArgsConstructor
+@Entity
 @NoArgsConstructor
-@Table(name = "feedback")
-public class Feedback {
+@Table(name = "especies")
+public class Especie {
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    private String feedbackId;
+    private String especieId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuarioId")
-    private Usuario usuario;
+    @Embedded
+    private RacaCachorro racaCachorro;
 
-    private String feedback;
-
+    private String especie;
+    private String outros;
 }

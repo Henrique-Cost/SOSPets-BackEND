@@ -1,14 +1,15 @@
-package com.tcc.sospets.services;
+package com.tcc.sospets.services.classes;
 
-import com.tcc.sospets.business.models.AnimalDomestico;
+import com.tcc.sospets.business.models.entities.AnimalDomestico;
 import com.tcc.sospets.business.repositories.IAnimalDomesticoRepositorio;
+import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AnimalDomesticoService implements IAnimalDomesticoService{
+public class AnimalDomesticoService implements IAnimalDomesticoService {
 
     @Autowired
     IAnimalDomesticoRepositorio animalDomesticoRepositorio;
@@ -24,8 +25,8 @@ public class AnimalDomesticoService implements IAnimalDomesticoService{
     }
 
     @Override
-    public void atualizaAnimal(AnimalDomestico animalDomestico, String id_animalDomestico) {
-        AnimalDomestico animalAnterior = animalDomesticoRepositorio.findById(id_animalDomestico).orElse(null);
+    public void atualizaAnimal(AnimalDomestico animalDomestico, String animalDomesticoId) {
+        AnimalDomestico animalAnterior = animalDomesticoRepositorio.findById(animalDomesticoId).orElse(null);
         animalAnterior.setPeso(animalDomestico.getPeso());
         animalAnterior.setGenero(animalDomestico.getGenero());
         animalAnterior.setAcessorio(animalDomestico.getAcessorio());
@@ -36,13 +37,13 @@ public class AnimalDomesticoService implements IAnimalDomesticoService{
     }
 
     @Override
-    public AnimalDomestico pegaAnimal(String id_animalDomestico) {
-        AnimalDomestico animalDomestico = animalDomesticoRepositorio.findById(id_animalDomestico).orElse(null);
+    public AnimalDomestico pegaAnimal(String animalDomesticoId) {
+        AnimalDomestico animalDomestico = animalDomesticoRepositorio.findById(animalDomesticoId).orElse(null);
         return animalDomestico;
     }
 
     @Override
-    public void deletaAnimal(String id_animalDomestico) {
-        animalDomesticoRepositorio.deleteById(id_animalDomestico);
+    public void deletaAnimal(String animalDomesticoId) {
+        animalDomesticoRepositorio.deleteById(animalDomesticoId);
     }
 }
