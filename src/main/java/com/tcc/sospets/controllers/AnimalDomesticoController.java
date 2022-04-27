@@ -1,8 +1,9 @@
 package com.tcc.sospets.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tcc.sospets.business.models.AnimalDomestico;
-import com.tcc.sospets.services.IAnimalDomesticoService;
+import com.tcc.sospets.business.models.entities.AnimalDomestico;
+import com.tcc.sospets.services.classes.AnimalDomesticoService;
+
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -22,7 +23,7 @@ import java.util.UUID;
 public class AnimalDomesticoController {
 
     @Autowired
-    IAnimalDomesticoService animalDomesticoService;
+    AnimalDomesticoService animalDomesticoService;
 
     @GetMapping
     public List<AnimalDomestico> getAnimaisDomesticos() {
@@ -34,19 +35,19 @@ public class AnimalDomesticoController {
         animalDomesticoService.saveAnimal(animalDomestico);
     }
 
-    @GetMapping("/{id_animalDomestico}")
-    public AnimalDomestico pegaAnimal(@PathVariable("id_animalDomestico") String id_animalDomestico){
-        return animalDomesticoService.pegaAnimal(id_animalDomestico);
+    @GetMapping("/{animalDomesticoId}")
+    public AnimalDomestico pegaAnimal(@PathVariable("animalDomesticoId") String animalDomesticoId){
+        return animalDomesticoService.pegaAnimal(animalDomesticoId);
     }
 
-    @PutMapping("/{id_animalDomestico}")
-    public void atualizaAnimal(@PathVariable("id_animalDomestico") String id_animalDomestico, @RequestBody AnimalDomestico animalDomestico){
-        animalDomesticoService.atualizaAnimal(animalDomestico, id_animalDomestico);
+    @PutMapping("/{animalDomesticoId}")
+    public void atualizaAnimal(@PathVariable("animalDomesticoId") String animalDomesticoId, @RequestBody AnimalDomestico animalDomestico){
+        animalDomesticoService.atualizaAnimal(animalDomestico, animalDomesticoId);
     }
 
-    @DeleteMapping("/{id_animalDomestico}")
-    public void deletaAnimal(@PathVariable("id_animalDomestico") String id_animalDomestico){
-        animalDomesticoService.deletaAnimal(id_animalDomestico);
+    @DeleteMapping("/{animalDomesticoId}")
+    public void deletaAnimal(@PathVariable("animalDomesticoId") String animalDomesticoId){
+        animalDomesticoService.deletaAnimal(animalDomesticoId);
     }
 
     @PostMapping(value = "/comFoto", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

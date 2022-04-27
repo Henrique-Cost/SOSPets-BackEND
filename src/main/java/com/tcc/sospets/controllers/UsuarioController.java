@@ -1,21 +1,11 @@
 package com.tcc.sospets.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tcc.sospets.business.models.AnimalDomestico;
-import com.tcc.sospets.business.models.Usuario;
-import com.tcc.sospets.services.IAnimalDomesticoService;
-import com.tcc.sospets.services.UsuarioService;
+import com.tcc.sospets.business.models.entities.Usuario;
+import com.tcc.sospets.services.classes.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/usuario")
@@ -32,19 +22,19 @@ public class UsuarioController {
         usuarioService.saveUsuario(usuario);
     }
 
-    @GetMapping("/{id_usuario}")
-    public Usuario pegaUsuario(@PathVariable("id_usuario") String id_usuario){
-        return usuarioService.pegaUsuario(id_usuario);
+    @GetMapping("/{usuarioId}")
+    public Usuario pegaUsuario(@PathVariable("usuarioId") String usuarioId){
+        return usuarioService.pegaUsuario(usuarioId);
     }
 
-    @PutMapping("/{id_usuario}")
-    public void atualizaUsuario(@PathVariable("id_usuario") String id_usuario, @RequestBody Usuario usuario){
-        usuarioService.atualizaUsuario(usuario, id_usuario);
+    @PutMapping("/{usuarioId}")
+    public void atualizaUsuario(@PathVariable("usuarioId") String usuarioId, @RequestBody Usuario usuario){
+        usuarioService.atualizaUsuario(usuario, usuarioId);
     }
 
-    @DeleteMapping("/{id_usuario}")
-    public void deletaUsuario(@PathVariable("id_usuario") String id_usuario){
-        usuarioService.deletaUsuario(id_usuario);
+    @DeleteMapping("/{usuarioId}")
+    public void deletaUsuario(@PathVariable("usuarioId") String usuarioId){
+        usuarioService.deletaUsuario(usuarioId);
     }
 
 }
