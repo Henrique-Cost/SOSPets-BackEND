@@ -13,6 +13,5 @@ public class Contato {
 
     private String telefone;
     private String celular;
-    private String emailAlt;
 
 }

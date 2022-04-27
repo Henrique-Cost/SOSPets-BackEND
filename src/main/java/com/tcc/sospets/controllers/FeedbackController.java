@@ -1,7 +1,7 @@
 package com.tcc.sospets.controllers;
 
 import com.tcc.sospets.business.models.entities.Feedback;
-import com.tcc.sospets.business.models.dto.classes.FeedbackService;
+import com.tcc.sospets.services.classes.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
