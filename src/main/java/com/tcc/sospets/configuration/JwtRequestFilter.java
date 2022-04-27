@@ -1,4 +1,4 @@
-package com.tcc.sospets.configuration;
+/* package com.tcc.sospets.configuration;
 
 
 import java.io.IOException;
@@ -18,6 +18,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import io.jsonwebtoken.ExpiredJwtException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
     @Autowired
@@ -60,4 +61,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
         chain.doFilter(request, response);
     }
+
 }
+
+ */

@@ -1,7 +1,7 @@
 package com.tcc.sospets.controllers;
 
 import com.tcc.sospets.business.models.entities.Usuario;
-import com.tcc.sospets.business.models.dto.classes.UsuarioService;
+import com.tcc.sospets.services.classes.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

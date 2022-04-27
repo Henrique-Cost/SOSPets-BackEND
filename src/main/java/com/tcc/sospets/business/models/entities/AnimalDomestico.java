@@ -26,7 +26,7 @@ public class AnimalDomestico {
     private Usuario usuario;
 
     //
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "especieId", nullable = false)
     private Especie especie;
 
@@ -34,7 +34,7 @@ public class AnimalDomestico {
     private CorAnimal corAnimal;
 
     //
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tipoUsuarioId", nullable = false)
     private TipoUsuarioClasse tipoUsuarioClasse;
 
