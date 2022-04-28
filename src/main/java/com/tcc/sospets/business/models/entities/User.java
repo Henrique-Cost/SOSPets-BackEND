@@ -5,15 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -22,6 +26,31 @@ public class User {
 
     @Column(unique = true)
     private String email;
-    private String nomeCompleto;
 
+    private String nome;
+
+    private String profileImage;
+
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() { return null; }
+
+    @Override
+    public String getPassword() { return null; }
+
+    @Override
+    public String getUsername() { return email; }
+
+    @Override
+    public boolean isAccountNonExpired() { return false; }
+
+    @Override
+    public boolean isAccountNonLocked() { return false; }
+
+    @Override
+    public boolean isCredentialsNonExpired() { return false; }
+
+    @Override
+    public boolean isEnabled() { return false; }
 }

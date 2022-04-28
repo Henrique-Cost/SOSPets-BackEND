@@ -1,7 +1,9 @@
-package com.tcc.sospets.services;
+package com.tcc.sospets.services.classes;
 
-import com.tcc.sospets.business.dto.FBAuthRequest;
-import com.tcc.sospets.business.dto.FBAuthResponse;
+
+import com.tcc.sospets.business.models.dto.FBRequest;
+import com.tcc.sospets.business.models.dto.FBResponse;
+import com.tcc.sospets.services.interfaces.IFirebaseService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +22,13 @@ public class FirebaseService implements IFirebaseService {
             "?key=" + WEBKEY;
 
     @Override
-    public void createUser(FBAuthRequest firebaseAuthRequest) throws Exception {
+    public void register(FBRequest firebaseAuthRequest) throws Exception {
 
         RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<FBAuthRequest> httpEntity = new HttpEntity<>(firebaseAuthRequest);
+        HttpEntity<FBRequest> httpEntity = new HttpEntity<>(firebaseAuthRequest);
         System.out.println(registerUrl);
-        ResponseEntity<FBAuthRequest> response =
-                restTemplate.exchange(registerUrl, HttpMethod.POST, httpEntity, FBAuthRequest.class);
+        ResponseEntity<FBRequest> response =
+                restTemplate.exchange(registerUrl, HttpMethod.POST, httpEntity, FBRequest.class);
 
         if (response.getStatusCodeValue() != 200) {
             throw new Exception("Nao pode registrar");
@@ -35,15 +37,16 @@ public class FirebaseService implements IFirebaseService {
     }
 
     @Override
-    public void login(FBAuthRequest firebaseAuthRequest) throws Exception {
+    public void login(FBRequest firebaseAuthRequest) throws Exception {
 
         RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<FBAuthRequest> httpEntity = new HttpEntity<>(firebaseAuthRequest);
-        ResponseEntity<FBAuthResponse> response =
-                restTemplate.exchange(loginUrl, HttpMethod.POST, httpEntity, FBAuthResponse.class);
+        HttpEntity<FBRequest> httpEntity = new HttpEntity<>(firebaseAuthRequest);
+        ResponseEntity<FBResponse> response =
+                restTemplate.exchange(loginUrl, HttpMethod.POST, httpEntity, FBResponse.class);
         if (response.getStatusCodeValue() != 200) {
             throw new Exception("Nao pode logar");
         }
+
         System.out.println(response.getBody());
         UsernamePasswordAuthenticationToken t = new UsernamePasswordAuthenticationToken(response.getBody().getEmail(), response.getBody().getIdToken());
         SecurityContextHolder.getContext().setAuthentication(t);
