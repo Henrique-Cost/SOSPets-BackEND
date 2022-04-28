@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class FirebaseService implements IFirebaseService {
 
-    private String WEBKEY = "AIzaSyARgY_59EJG7sTVG1FbcheASa_8N3l8x2s";
+    private String WEBKEY = "AIzaSyB5Km3RdN-pIIID72SEr3xOC7E_3CeuhJg";
     private String loginUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword" +
             "?key=" + WEBKEY;
     private String registerUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp" +
