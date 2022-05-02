@@ -29,7 +29,6 @@ public class User implements UserDetails {
 
     private String nome;
 
-    private String profileImage;
 
 
 
