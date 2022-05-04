@@ -1,7 +1,7 @@
 package com.tcc.sospets.controllers;
 
-import com.tcc.sospets.business.models.Feedback;
-import com.tcc.sospets.services.FeedbackService;
+import com.tcc.sospets.business.models.entities.Feedback;
+import com.tcc.sospets.services.classes.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,25 +15,27 @@ public class FeedbackController {
     FeedbackService feedbackService;
 
     @GetMapping
-    public List<Feedback> getFeedbacks() { return feedbackService.getFeedbacks(); }
+    public List<Feedback> getFeedbacks(){
+        return feedbackService.getFeedbacks();
+    }
 
     @PostMapping
     public void saveFeedback (@RequestBody Feedback feedback){
         feedbackService.saveFeedback(feedback);
     }
 
-    @GetMapping("/{id_feedback}")
-    public Feedback pegaFeedback(@PathVariable("id_feedback") String id_feedback){
-        return feedbackService.pegaFeedback(id_feedback);
+    @GetMapping("/{feedbackId}")
+    public Feedback pegaFeedback(@PathVariable("feedbackId") String feedbackId){
+        return feedbackService.pegaFeedback(feedbackId);
     }
 
-    @PutMapping("/{id_feedback}")
-    public void atualizaFeedback(@PathVariable("id_feedback") String id_feedback, @RequestBody Feedback feedback){
-        feedbackService.atualizaFeedback(feedback, id_feedback);
+    @PutMapping("/{feedbackId}")
+    public void atualizaFeedback(@PathVariable("feedbackId") String feedbackId, @RequestBody Feedback feedback){
+        feedbackService.atualizaFeedback(feedback, feedbackId);
     }
 
-    @DeleteMapping("/{id_feedback}")
-    public void deletaFeedback(@PathVariable("id_feedback") String id_feedback){
-        feedbackService.deletaFeedback(id_feedback);
+    @DeleteMapping("/{feedbackId}")
+    public void deletaFeedback(@PathVariable("feedbackId") String feedbackId){
+        feedbackService.deletaFeedback(feedbackId);
     }
 }
