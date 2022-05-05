@@ -24,6 +24,6 @@ public class Especie {
     @Embedded
     private RacaCachorro racaCachorro;
 
-    private String especies;
+    private String especie;
     private String outros;
 }

@@ -29,9 +29,6 @@ public class AnimalDomestico {
     private Especie especie;
 
 
-    @JoinColumn(name = "racas_Cachorro", referencedColumnName = "id_racaCachorro")
-    private String id_racaCachorro;
-
     @Embedded
     private CorAnimal corAnimal;
 

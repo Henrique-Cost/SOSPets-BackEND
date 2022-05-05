@@ -34,7 +34,7 @@ public class EspecieService implements IEspecieService {
     @Override
     public void atualizaEspecie(Especie especie, String especieId) {
         Especie especieAnterior = especieRepositorio.findById(especieId).orElse(null);
-        especieAnterior.setEspecies(especie.getEspecies());
+        especieAnterior.setEspecie(especie.getEspecie());
         especieAnterior.setOutros(especie.getOutros());
         especieAnterior.setRacaCachorro(especie.getRacaCachorro());
         especieRepositorio.save(especieAnterior);
