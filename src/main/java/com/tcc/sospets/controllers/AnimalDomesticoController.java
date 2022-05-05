@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
 import com.tcc.sospets.services.classes.AnimalDomesticoService;
 
+import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -23,7 +24,7 @@ import java.util.UUID;
 public class AnimalDomesticoController {
 
     @Autowired
-    AnimalDomesticoService animalDomesticoService;
+    IAnimalDomesticoService animalDomesticoService;
 
     @GetMapping
     public List<AnimalDomestico> getAnimaisDomesticos() {

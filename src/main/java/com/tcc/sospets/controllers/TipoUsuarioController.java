@@ -2,6 +2,7 @@ package com.tcc.sospets.controllers;
 
 import com.tcc.sospets.business.models.entities.TipoUsuarioClasse;
 import com.tcc.sospets.services.classes.TipoUsuarioService;
+import com.tcc.sospets.services.interfaces.ITipoUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class TipoUsuarioController {
 
     @Autowired
-    TipoUsuarioService tipoUsuarioService;
+    ITipoUsuarioService tipoUsuarioService;
 
     @GetMapping
     public List<TipoUsuarioClasse> getTiposUsuarios(){
