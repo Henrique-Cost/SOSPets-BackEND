@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/messaging")
 public class MessagingController {
-    
+
     @Autowired
     IMessagingService messagingService;
 
