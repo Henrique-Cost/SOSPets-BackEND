@@ -27,6 +27,8 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
 
+    private String password;
+
     private String nome;
 
     private String fcmToken;

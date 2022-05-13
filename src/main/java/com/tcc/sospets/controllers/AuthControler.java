@@ -12,6 +12,7 @@ import com.tcc.sospets.business.models.dto.GoogleAuthRequest;
 import com.tcc.sospets.business.models.dto.TokenResponse;
 import com.tcc.sospets.business.models.entities.User;
 import com.tcc.sospets.business.repositories.IUserRepositorio;
+import com.tcc.sospets.services.classes.FirebaseService;
 import com.tcc.sospets.services.classes.JwtUserDetailsService;
 import com.tcc.sospets.services.interfaces.IFirebaseService;
 import com.tcc.sospets.utils.JwtTokenUtil;
@@ -43,7 +44,6 @@ public class AuthControler {
 
     @PostMapping("/register")
     public void registraUsuarioFirebase(@RequestBody FBRequest fbRequest) throws Exception {
-
         firebaseService.register(fbRequest);
         String email = fbRequest.getEmail();
         User user = new User();
@@ -56,42 +56,8 @@ public class AuthControler {
             UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(fbRequest.getEmail());
             String token = jwtTokenUtil.generateToken(userDetails);
             return new TokenResponse(token);
-
         }
-
-        @PostMapping("/loginWithGoogle")
-        public TokenResponse autenticaUsuariocomGoogle(@RequestBody GoogleAuthRequest googleAuthRequest) throws Exception {
-            HttpTransport httpTransport = new NetHttpTransport();
-            JsonFactory jsonFactory = new GsonFactory();
-            String clientId = "182449133691-9jihapbpjtec5tqfkirakua2vqs3r1vb.apps.googleusercontent.com";
-
-            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(httpTransport, jsonFactory)
-                    .setAudience(Collections.singletonList(clientId))
-                    .build();
-            GoogleIdToken idToken = verifier.verify(googleAuthRequest.getGoogleToken());
-            if (idToken != null) {
-                GoogleIdToken.Payload payload = idToken.getPayload();
-
-                String userId = payload.getSubject();
-                System.out.println("User ID: " + userId);
-
-                String email = payload.getEmail();
-                String name = (String) payload.get("name");
-                String pictureUrl = (String) payload.get("picture");
-
-                UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
-                String token = jwtTokenUtil.generateToken(userDetails);
-                return new TokenResponse(token);
-            }
-
-            throw new HttpException();
-        }
-
-            @PostMapping("/logout")
-            public void logout (String token, List < String > tokens){
-                tokens.remove(token);
-            }
-        }
+}
 
 
 

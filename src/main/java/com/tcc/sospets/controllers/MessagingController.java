@@ -2,7 +2,7 @@ package com.tcc.sospets.controllers;
 
 import com.tcc.sospets.business.models.dto.FcmRequest;
 import com.tcc.sospets.business.models.entities.User;
-import com.tcc.sospets.services.interfaces.IMessagingService;
+import com.tcc.sospets.services.classes.MessagingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessagingController {
 
     @Autowired
-    IMessagingService messagingService;
+    MessagingService messagingService;
 
     @PostMapping("/register")
     public void registraFcmToken(@RequestBody FcmRequest fcmRequest, Authentication authentication){
