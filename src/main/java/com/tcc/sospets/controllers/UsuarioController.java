@@ -2,6 +2,7 @@ package com.tcc.sospets.controllers;
 
 import com.tcc.sospets.business.models.entities.Usuario;
 import com.tcc.sospets.services.classes.UsuarioService;
+import com.tcc.sospets.services.interfaces.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    UsuarioService usuarioService;
+    IUsuarioService usuarioService;
 
     @GetMapping
     public List<Usuario> getUsuario() { return usuarioService.getUsuarios(); }
