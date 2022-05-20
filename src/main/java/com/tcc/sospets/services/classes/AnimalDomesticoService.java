@@ -27,11 +27,12 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
     @Override
     public void atualizaAnimal(AnimalDomestico animalDomestico, String animalDomesticoId) {
         AnimalDomestico animalAnterior = animalDomesticoRepositorio.findById(animalDomesticoId).orElse(null);
-        animalAnterior.setPeso(animalDomestico.getPeso());
+        animalAnterior.setPorte(animalDomestico.getPorte());
         animalAnterior.setGenero(animalDomestico.getGenero());
         animalAnterior.setAcessorio(animalDomestico.getAcessorio());
         animalAnterior.setCondicaoAnimal(animalDomestico.getCondicaoAnimal());
         animalAnterior.setLocalizacao(animalDomestico.getLocalizacao());
+        animalAnterior.setTipoUsuarioClasse(animalDomestico.getTipoUsuarioClasse());
         animalAnterior.setFotoAnimal(animalDomestico.getFotoAnimal());
         animalAnterior.setCorAnimal(animalDomestico.getCorAnimal());
         animalDomesticoRepositorio.save(animalAnterior);
