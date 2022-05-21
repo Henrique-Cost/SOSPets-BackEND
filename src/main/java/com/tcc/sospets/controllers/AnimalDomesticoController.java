@@ -1,12 +1,15 @@
 package com.tcc.sospets.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tcc.sospets.business.models.dto.AnimalDomesticoResponse;
+import com.tcc.sospets.business.models.dto.PageAnimalDomesticoResponse;
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
 import com.tcc.sospets.services.classes.AnimalDomesticoService;
 
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +21,7 @@ import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/animalDomestico")
@@ -27,9 +31,26 @@ public class AnimalDomesticoController {
     IAnimalDomesticoService animalDomesticoService;
 
     @GetMapping
-    public List<AnimalDomestico> getAnimaisDomesticos() {
-        return animalDomesticoService.getAnimaisDomesticos();
+    public PageAnimalDomesticoResponse getAnimaisDomesticos(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize){
+        Page<AnimalDomestico> animais = animalDomesticoService.getAnimaisDomesticos(page, pageSize);
+        List<AnimalDomesticoResponse> animalDomesticoResponseList = animais.stream()
+                .map(animalDomestico -> AnimalDomesticoResponse.builder()
+                        .genero(animalDomestico.getGenero())
+                        .porte(animalDomestico.getPorte())
+                        .corAnimal(animalDomestico.getCorAnimal())
+                        .acessorio(animalDomestico.getAcessorio())
+                        .especie(animalDomestico.getEspecie())
+                        .condicaoAnimal(animalDomestico.getCondicaoAnimal())
+                        .condicaoAnimal(animalDomestico.getCondicaoAnimal())
+                        .localizacao(animalDomestico.getLocalizacao())
+                        .fotoAnimal(animalDomestico.getFotoAnimal())
+                        .build()
+                ).collect(Collectors.toList());
+        return PageAnimalDomesticoResponse.builder()
+                .animais(animalDomesticoResponseList)
+                .totalPages(animais.getTotalPages()).build();
     }
+
 
     @PostMapping
     public void saveAnimal(@RequestBody AnimalDomestico animalDomestico){

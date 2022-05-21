@@ -1,12 +1,13 @@
 package com.tcc.sospets.services.interfaces;
 
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface IAnimalDomesticoService {
 
-    List<AnimalDomestico> getAnimaisDomesticos();
+    Page<AnimalDomestico> getAnimaisDomesticos(int page, int pageSize);
 
     void saveAnimal(AnimalDomestico animalDomestico);
 

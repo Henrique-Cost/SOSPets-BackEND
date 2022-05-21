@@ -4,6 +4,8 @@ import com.tcc.sospets.business.models.entities.AnimalDomestico;
 import com.tcc.sospets.business.repositories.IAnimalDomesticoRepositorio;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +16,11 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
     @Autowired
     IAnimalDomesticoRepositorio animalDomesticoRepositorio;
 
+
     @Override
-    public List<AnimalDomestico> getAnimaisDomesticos() {
-        return animalDomesticoRepositorio.findAll();
+    public Page<AnimalDomestico> getAnimaisDomesticos(int page, int pageSize) {
+        Page<AnimalDomestico> animais= animalDomesticoRepositorio.findAll(PageRequest.of(page, pageSize));
+        return animais;
     }
 
     @Override
