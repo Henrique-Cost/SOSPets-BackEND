@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface IAnimalDomesticoRepositorio extends JpaRepository<AnimalDomestico, String>{
-    List<AnimalDomestico> findByPorteAndEspecieAndCorAndAcessorioAndCondicaoAnimalAndLocalizacaoAndGenero(
+    List<AnimalDomestico> findByPorteAndEspecieAndCorAnimalAndAcessorioAndCondicaoAnimalAndLocalizacaoAndGenero(
             String porte,
             Especie especie,
             CorAnimal corAnimal,
