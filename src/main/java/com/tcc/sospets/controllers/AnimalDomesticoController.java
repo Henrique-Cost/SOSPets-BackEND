@@ -4,8 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcc.sospets.business.models.dto.AnimalDomesticoResponse;
 import com.tcc.sospets.business.models.dto.PageAnimalDomesticoResponse;
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
-import com.tcc.sospets.services.classes.AnimalDomesticoService;
 
+import com.tcc.sospets.business.models.entities.CorAnimal;
+import com.tcc.sospets.business.models.entities.Especie;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,8 @@ public class AnimalDomesticoController {
                         .acessorio(animalDomestico.getAcessorio())
                         .especie(animalDomestico.getEspecie())
                         .condicaoAnimal(animalDomestico.getCondicaoAnimal())
-                        .condicaoAnimal(animalDomestico.getCondicaoAnimal())
                         .localizacao(animalDomestico.getLocalizacao())
+                        .tipoUsuarioClasse(animalDomestico.getTipoUsuarioClasse())
                         .fotoAnimal(animalDomestico.getFotoAnimal())
                         .build()
                 ).collect(Collectors.toList());
@@ -51,6 +52,17 @@ public class AnimalDomesticoController {
                 .totalPages(animais.getTotalPages()).build();
     }
 
+    @GetMapping("/query")
+    public List<AnimalDomestico> queryAnimal(@RequestParam("porte") String porte,
+                                             @RequestParam("especie") Especie especie,
+                                             @RequestParam("corAnimal") CorAnimal corAnimal,
+                                             @RequestParam("acessorio") String acessorio,
+                                             @RequestParam("condicaoAnimal") String condicaoAnimal,
+                                             @RequestParam("localizacao") String localizacao,
+                                             @RequestParam("genero") String genero)
+    {
+        return animalDomesticoService.queryAnimal(porte, especie, corAnimal, acessorio, condicaoAnimal, localizacao, genero);
+    }
 
     @PostMapping
     public void saveAnimal(@RequestBody AnimalDomestico animalDomestico){

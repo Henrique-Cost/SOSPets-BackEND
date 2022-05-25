@@ -36,7 +36,7 @@ public class AnimalDomestico {
     private TipoUsuarioClasse tipoUsuarioClasse;
 
     private String porte;
-    private String Genero;
+    private String genero;
     private String acessorio;
     private String condicaoAnimal;
     private String localizacao;

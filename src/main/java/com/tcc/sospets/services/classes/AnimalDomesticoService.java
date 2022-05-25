@@ -1,14 +1,18 @@
 package com.tcc.sospets.services.classes;
 
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
+import com.tcc.sospets.business.models.entities.CorAnimal;
+import com.tcc.sospets.business.models.entities.Especie;
 import com.tcc.sospets.business.repositories.IAnimalDomesticoRepositorio;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnimalDomesticoService implements IAnimalDomesticoService {
@@ -19,9 +23,33 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
 
     @Override
     public Page<AnimalDomestico> getAnimaisDomesticos(int page, int pageSize) {
-        Page<AnimalDomestico> animais= animalDomesticoRepositorio.findAll(PageRequest.of(page, pageSize));
+        Page<AnimalDomestico> animais = animalDomesticoRepositorio.findAll(PageRequest.of(page, pageSize));
         return animais;
     }
+
+    @Override
+    public List<AnimalDomestico> queryAnimal(
+            String porte,
+            Especie especie,
+            CorAnimal corAnimal,
+            String acessorio,
+            String condicaoAnimal,
+            String localizacao,
+            String genero
+    ) {
+        List<AnimalDomestico> queryAnimais =
+                animalDomesticoRepositorio.findByPorteAndEspecieAndCorAnimalAndAcessorioAndCondicaoAnimalAndLocalizacaoAndGenero(
+                        porte,
+                        especie,
+                        corAnimal,
+                        acessorio,
+                        condicaoAnimal,
+                        localizacao,
+                        genero
+                );
+        return queryAnimais;
+    }
+
 
     @Override
     public void saveAnimal(AnimalDomestico animalDomestico) {
