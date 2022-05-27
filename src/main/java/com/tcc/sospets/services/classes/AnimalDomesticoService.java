@@ -1,7 +1,7 @@
 package com.tcc.sospets.services.classes;
 
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
-import com.tcc.sospets.business.models.entities.CorAnimal;
+
 import com.tcc.sospets.business.models.entities.Especie;
 import com.tcc.sospets.business.repositories.IAnimalDomesticoRepositorio;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
@@ -31,17 +31,17 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
     public List<AnimalDomestico> queryAnimal(
             String porte,
             Especie especie,
-            CorAnimal corAnimal,
+            String cor,
             String acessorio,
             String condicaoAnimal,
             String localizacao,
             String genero
     ) {
         List<AnimalDomestico> queryAnimais =
-                animalDomesticoRepositorio.findByPorteAndEspecieAndCorAnimalAndAcessorioAndCondicaoAnimalAndLocalizacaoAndGenero(
+                animalDomesticoRepositorio.findByPorteAndEspecieAndCorAndAcessorioAndCondicaoAnimalAndLocalizacaoAndGenero(
                         porte,
                         especie,
-                        corAnimal,
+                        cor,
                         acessorio,
                         condicaoAnimal,
                         localizacao,
@@ -64,9 +64,8 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
         animalAnterior.setAcessorio(animalDomestico.getAcessorio());
         animalAnterior.setCondicaoAnimal(animalDomestico.getCondicaoAnimal());
         animalAnterior.setLocalizacao(animalDomestico.getLocalizacao());
-        animalAnterior.setTipoUsuarioClasse(animalDomestico.getTipoUsuarioClasse());
         animalAnterior.setFotoAnimal(animalDomestico.getFotoAnimal());
-        animalAnterior.setCorAnimal(animalDomestico.getCorAnimal());
+        animalAnterior.setCor(animalDomestico.getCor());
         animalDomesticoRepositorio.save(animalAnterior);
     }
 

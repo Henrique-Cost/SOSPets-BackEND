@@ -35,7 +35,8 @@ public class UsuarioService implements IUsuarioService {
     public void atualizaUsuario(Usuario usuario, String usuarioId) {
         Usuario usuarioAnterior = usuarioRepositorio.findById(usuarioId).orElse(null);
         usuarioAnterior.setNomeDeUsuario(usuario.getNomeDeUsuario());
-        usuarioAnterior.setContato(usuario.getContato());
+        usuarioAnterior.setCelular(usuario.getCelular());
+        usuarioAnterior.setTelefone(usuario.getTelefone());
         usuarioRepositorio.save(usuarioAnterior);
     }
 

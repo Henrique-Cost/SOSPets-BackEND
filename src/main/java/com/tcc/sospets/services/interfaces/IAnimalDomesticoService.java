@@ -1,7 +1,7 @@
 package com.tcc.sospets.services.interfaces;
 
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
-import com.tcc.sospets.business.models.entities.CorAnimal;
+
 import com.tcc.sospets.business.models.entities.Especie;
 import org.springframework.data.domain.Page;
 
@@ -14,7 +14,7 @@ public interface IAnimalDomesticoService {
 
     List<AnimalDomestico> queryAnimal(String porte,
                                           Especie especie,
-                                          CorAnimal corAnimal,
+                                          String cor,
                                           String acessorio,
                                           String condicaoAnimal,
                                           String localizacao,

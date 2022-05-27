@@ -21,20 +21,16 @@ public class AnimalDomestico {
     private String animalDomesticoId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuarioId", nullable = false)
+    @JoinColumn(name = "usuarioId", nullable = true)
     private Usuario usuario;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "especieId", nullable = false)
+    @JoinColumn(name = "especieId", nullable = true)
     private Especie especie;
 
-    @Embedded
-    private CorAnimal corAnimal;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tipoUsuarioId", nullable = false)
-    private TipoUsuarioClasse tipoUsuarioClasse;
-
+    private String tipoUsuario;
+    private String cor;
     private String porte;
     private String genero;
     private String acessorio;
