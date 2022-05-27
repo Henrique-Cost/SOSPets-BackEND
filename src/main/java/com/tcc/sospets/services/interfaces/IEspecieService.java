@@ -10,7 +10,7 @@ public interface IEspecieService {
 
     Especie pegaEspecie(String especieId);
 
-    void saveEspecie(Especie especie);
+    void criaEspecie(Especie especie);
 
     void atualizaEspecie(Especie especie, String especieId);
 

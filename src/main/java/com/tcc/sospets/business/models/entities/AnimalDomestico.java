@@ -15,24 +15,24 @@ import javax.persistence.*;
 @Table(name = "animal_domestico")
 public class AnimalDomestico {
     @Id
-    @GeneratedValue(generator = "uuid")
+    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
     private String animalDomesticoId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuarioId", nullable = false)
+    @JoinColumn(name = "usuarioId")
     private Usuario usuario;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "especieId", nullable = false)
+    @JoinColumn(name = "especieId")
     private Especie especie;
 
     @Embedded
     private CorAnimal corAnimal;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tipoUsuarioId", nullable = false)
+    @JoinColumn(name = "tipoUsuarioId")
     private TipoUsuarioClasse tipoUsuarioClasse;
 
     private String porte;

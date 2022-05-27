@@ -24,9 +24,9 @@ public class EspecieController {
         return especieService.pegaEspecie(especieId);
     }
 
-    @PostMapping("/{especieId}")
-    public void saveEspecie(@RequestBody String especieId) {
-        especieService.pegaEspecie(especieId);
+    @PostMapping
+    public void criaEspecie(@RequestBody Especie especie) {
+        especieService.criaEspecie(especie);
     }
 
     @PutMapping("/{especieId}")

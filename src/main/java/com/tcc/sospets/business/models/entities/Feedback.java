@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "feedback")
 public class Feedback {
     @Id
-    @GeneratedValue(generator = "uuid")
+    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
     private String feedbackId;

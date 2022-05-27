@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Table(name = "usuario")
 public class Usuario implements Serializable {
     @Id
-    @GeneratedValue(generator = "uuid")
+    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
     private String usuarioId;
@@ -25,9 +25,9 @@ public class Usuario implements Serializable {
     @Embedded
     private Contato contato;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId", nullable = false)
-    private User user;
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "userId", nullable = false)
+    //private User user;
 
     private String nomeDeUsuario;
 }

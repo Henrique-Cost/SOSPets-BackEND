@@ -25,7 +25,7 @@ public class TipoUsuarioController {
         return tipoUsuarioService.pegaTipoUsuario(tipoUsuarioId);
     }
 
-    @PostMapping("/{tipoUsuarioId}")
+    @PostMapping()
     public void saveTipoUsuario(@RequestBody TipoUsuarioClasse tipoUsuarioClasse){
         tipoUsuarioService.saveTipoUsuario(tipoUsuarioClasse);
     }

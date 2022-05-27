@@ -27,7 +27,7 @@ public class EspecieService implements IEspecieService {
     }
 
     @Override
-    public void saveEspecie(Especie especie) {
+    public void criaEspecie(Especie especie) {
         especieRepositorio.save(especie);
     }
 
