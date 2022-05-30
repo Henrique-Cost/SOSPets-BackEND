@@ -27,10 +27,9 @@ public class EspecieController {
     @PostMapping
     public void criaEspecie(@RequestBody Especie especie) {
         especieService.criaEspecie(especie);
-    }
 
-    @PutMapping("/{especieId}")
-    public void atualizaEspecie(@PathVariable("especieId") String especieId, @RequestBody Especie especie){
+    }
+    public void atualizaEspecie(@PathVariable("especieId") String especieId, @RequestBody Especie especie) {
         especieService.atualizaEspecie(especie, especieId);
     }
 

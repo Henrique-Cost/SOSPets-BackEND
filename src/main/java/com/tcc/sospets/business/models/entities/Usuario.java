@@ -22,12 +22,10 @@ public class Usuario implements Serializable {
     @ToString.Exclude
     private String usuarioId;
 
-    @Embedded
-    private Contato contato;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId", nullable = false)
+    private User user;
 
-    //@OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "userId", nullable = false)
-    //private User user;
-
-    private String nomeDeUsuario;
+    private String telefone;
+    private String celular;
 }

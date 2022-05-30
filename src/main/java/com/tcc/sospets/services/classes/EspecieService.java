@@ -36,7 +36,7 @@ public class EspecieService implements IEspecieService {
         Especie especieAnterior = especieRepositorio.findById(especieId).orElse(null);
         especieAnterior.setEspecie(especie.getEspecie());
         especieAnterior.setOutros(especie.getOutros());
-        especieAnterior.setRacaCachorro(especie.getRacaCachorro());
+        especieAnterior.setRaca(especie.getRaca());
         especieRepositorio.save(especieAnterior);
     }
 

@@ -4,7 +4,9 @@ package com.tcc.sospets.controllers;
 import com.tcc.sospets.business.models.dto.FBRequest;
 import com.tcc.sospets.business.models.dto.TokenResponse;
 import com.tcc.sospets.business.models.entities.User;
+import com.tcc.sospets.business.models.entities.Usuario;
 import com.tcc.sospets.business.repositories.IUserRepositorio;
+import com.tcc.sospets.business.repositories.IUsuarioRepositorio;
 import com.tcc.sospets.services.classes.JwtUserDetailsService;
 import com.tcc.sospets.services.interfaces.IFirebaseService;
 import com.tcc.sospets.utils.JwtTokenUtil;
@@ -30,13 +32,20 @@ public class AuthControler {
     @Autowired
     IUserRepositorio userRepositorio;
 
+    @Autowired
+    IUsuarioRepositorio usuarioRepositorio;
+
     @PostMapping("/register")
     public void registraUsuarioFirebase(@RequestBody FBRequest fbRequest) throws Exception {
         firebaseService.register(fbRequest);
         String email = fbRequest.getEmail();
+        String nome = fbRequest.getNome();
         User user = new User();
         user.setEmail(email);
-        userRepositorio.save(user);
+        user.setNome(nome);
+        Usuario usuario = new Usuario();
+        usuario.setUser(userRepositorio.save(user));
+        usuarioRepositorio.save(usuario);
     }
         @PostMapping("/login")
         public TokenResponse autenticaUsuarioFirebase(@RequestBody FBRequest fbRequest) throws Exception {

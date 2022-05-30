@@ -28,13 +28,10 @@ public class AnimalDomestico {
     @JoinColumn(name = "especieId")
     private Especie especie;
 
-    @Embedded
-    private CorAnimal corAnimal;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tipoUsuarioId")
-    private TipoUsuarioClasse tipoUsuarioClasse;
 
+    private String tipoUsuario;
+    private String cor;
     private String porte;
     private String genero;
     private String acessorio;

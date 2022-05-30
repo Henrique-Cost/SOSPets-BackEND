@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -21,9 +22,10 @@ public class Especie {
     @ToString.Exclude
     private String especieId;
 
-    @Embedded
-    private RacaCachorro racaCachorro;
+    @OneToMany(mappedBy = "especie")
+    private List<AnimalDomestico> animalDomesticos;
 
+    private String raca;
     private String especie;
     private String outros;
 }
