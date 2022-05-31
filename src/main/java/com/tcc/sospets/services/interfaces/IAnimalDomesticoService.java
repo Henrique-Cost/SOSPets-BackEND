@@ -1,23 +1,22 @@
 package com.tcc.sospets.services.interfaces;
 
-import com.tcc.sospets.business.models.entities.AnimalDomestico;
+import com.tcc.sospets.business.models.entities.*;
 
-import com.tcc.sospets.business.models.entities.EspecieEnum;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface IAnimalDomesticoService {
 
-    Page<AnimalDomestico> getAnimaisDomesticos(int page, int pageSize);
+    Page<AnimalDomestico> getAnimaisDomesticos(Integer page, Integer pageSize);
 
-    List<AnimalDomestico> queryAnimal(String porte,
+    List<AnimalDomestico> queryAnimal(PorteEnum porte,
                                           EspecieEnum especie,
-                                          String cor,
+                                          CorEnum cor,
                                           String acessorio,
-                                          String condicaoAnimal,
+                                          CondicaoAnimalEnum condicaoAnimal,
                                           String localizacao,
-                                          String genero);
+                                          GeneroEnum genero);
 
 
     void saveAnimal(AnimalDomestico animalDomestico);

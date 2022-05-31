@@ -8,6 +8,6 @@ import java.util.List;
 @Data
 @Builder
 public class PageAnimalDomesticoResponse {
-    int totalPages;
+    Integer totalPages;
     List<AnimalDomesticoResponse> animais;
 }

@@ -1,8 +1,7 @@
 package com.tcc.sospets.services.classes;
 
-import com.tcc.sospets.business.models.entities.AnimalDomestico;
+import com.tcc.sospets.business.models.entities.*;
 
-import com.tcc.sospets.business.models.entities.EspecieEnum;
 import com.tcc.sospets.business.repositories.IAnimalDomesticoRepositorio;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +19,20 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
 
 
     @Override
-    public Page<AnimalDomestico> getAnimaisDomesticos(int page, int pageSize) {
+    public Page<AnimalDomestico> getAnimaisDomesticos(Integer page, Integer pageSize) {
         Page<AnimalDomestico> animais = animalDomesticoRepositorio.findAll(PageRequest.of(page, pageSize));
         return animais;
     }
 
     @Override
     public List<AnimalDomestico> queryAnimal(
-            String porte,
+            PorteEnum porte,
             EspecieEnum especie,
-            String cor,
+            CorEnum cor,
             String acessorio,
-            String condicaoAnimal,
+            CondicaoAnimalEnum condicaoAnimal,
             String localizacao,
-            String genero
+            GeneroEnum genero
     ) {
         List<AnimalDomestico> queryAnimais =
                 animalDomesticoRepositorio.findByPorteAndEspecieAndCorAndAcessorioAndCondicaoAnimalAndLocalizacaoAndGenero(
@@ -57,13 +56,15 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
     @Override
     public void atualizaAnimal(AnimalDomestico animalDomestico, String animalDomesticoId) {
         AnimalDomestico animalAnterior = animalDomesticoRepositorio.findById(animalDomesticoId).orElse(null);
-        animalAnterior.setPorte(animalDomestico.getPorte());
-        animalAnterior.setGenero(animalDomestico.getGenero());
         animalAnterior.setAcessorio(animalDomestico.getAcessorio());
         animalAnterior.setCondicaoAnimal(animalDomestico.getCondicaoAnimal());
+        animalAnterior.setCor(animalDomestico.getCor());
+        animalAnterior.setGenero(animalDomestico.getGenero());
+        animalAnterior.setPorte(animalDomestico.getPorte());
+        animalAnterior.setEspecie(animalDomestico.getEspecie());
+        animalAnterior.setTipoUsuario(animalDomestico.getTipoUsuario());
         animalAnterior.setLocalizacao(animalDomestico.getLocalizacao());
         animalAnterior.setFotoAnimal(animalDomestico.getFotoAnimal());
-        animalAnterior.setCor(animalDomestico.getCor());
         animalDomesticoRepositorio.save(animalAnterior);
     }
 

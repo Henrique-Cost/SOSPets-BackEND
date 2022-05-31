@@ -3,9 +3,8 @@ package com.tcc.sospets.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcc.sospets.business.models.dto.AnimalDomesticoResponse;
 import com.tcc.sospets.business.models.dto.PageAnimalDomesticoResponse;
-import com.tcc.sospets.business.models.entities.AnimalDomestico;
+import com.tcc.sospets.business.models.entities.*;
 
-import com.tcc.sospets.business.models.entities.EspecieEnum;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +34,14 @@ public class AnimalDomesticoController {
         Page<AnimalDomestico> animais = animalDomesticoService.getAnimaisDomesticos(page, pageSize);
         List<AnimalDomesticoResponse> animalDomesticoResponseList = animais.stream()
                 .map(animalDomestico -> AnimalDomesticoResponse.builder()
+                        .acessorio(animalDomestico.getAcessorio())
+                        .localizacao(animalDomestico.getLocalizacao())
+                        .fotoAnimal(animalDomestico.getFotoAnimal())
+                        .cor(animalDomestico.getCor())
+                        .condicaoAnimal(animalDomestico.getCondicaoAnimal())
                         .genero(animalDomestico.getGenero())
                         .porte(animalDomestico.getPorte())
-                        .cor(animalDomestico.getCor())
-                        .acessorio(animalDomestico.getAcessorio())
-                        .condicaoAnimal(animalDomestico.getCondicaoAnimal())
-                        .localizacao(animalDomestico.getLocalizacao())
                         .tipoUsuario(animalDomestico.getTipoUsuario())
-                        .fotoAnimal(animalDomestico.getFotoAnimal())
                         .build()
                 ).collect(Collectors.toList());
         return PageAnimalDomesticoResponse.builder()
@@ -51,13 +50,13 @@ public class AnimalDomesticoController {
     }
 
     @GetMapping("/query")
-    public List<AnimalDomestico> queryAnimal(@RequestParam("porte") String porte,
+    public List<AnimalDomestico> queryAnimal(@RequestParam("porte") PorteEnum porte,
                                              @RequestParam("especie") EspecieEnum especie,
-                                             @RequestParam("cor") String cor,
+                                             @RequestParam("cor") CorEnum cor,
                                              @RequestParam("acessorio") String acessorio,
-                                             @RequestParam("condicaoAnimal") String condicaoAnimal,
+                                             @RequestParam("condicaoAnimal") CondicaoAnimalEnum condicaoAnimal,
                                              @RequestParam("localizacao") String localizacao,
-                                             @RequestParam("genero") String genero)
+                                             @RequestParam("genero") GeneroEnum genero)
     {
         return animalDomesticoService.queryAnimal(porte, especie, cor, acessorio, condicaoAnimal, localizacao, genero);
     }

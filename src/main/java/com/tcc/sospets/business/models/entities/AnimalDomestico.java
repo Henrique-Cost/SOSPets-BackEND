@@ -24,13 +24,13 @@ public class AnimalDomestico {
     @JoinColumn(name = "usuarioId")
     private Usuario usuario;
 
-
-    private String tipoUsuario;
-    private String cor;
-    private String porte;
-    private String genero;
+    private EspecieEnum especie;
+    private CondicaoAnimalEnum condicaoAnimal;
+    private CorEnum cor;
+    private GeneroEnum genero;
+    private PorteEnum porte;
+    private TipoUsuarioEnum tipoUsuario;
     private String acessorio;
-    private String condicaoAnimal;
     private String localizacao;
     private String fotoAnimal;
 }

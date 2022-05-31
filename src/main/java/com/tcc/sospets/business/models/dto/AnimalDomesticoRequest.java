@@ -1,5 +1,6 @@
 package com.tcc.sospets.business.models.dto;
 
+import com.tcc.sospets.business.models.entities.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,13 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AnimalDomesticoRequest {
 
-    String tipoUsuario;
-    String Genero;
-    String porte;
-    Especie especie;
-    String cor;
+    PorteEnum porte;
+    EspecieEnum especie;
+    CorEnum cor;
+    TipoUsuarioEnum tipoUsuario;
+    CondicaoAnimalEnum condicaoAnimal;
+    GeneroEnum genero;
     String acessorio;
-    String condicaoAnimal;
     String localizacao;
     String fotoAnimal;
 }
