@@ -1,6 +1,5 @@
 package com.tcc.sospets.business.models.dto;
 
-import com.tcc.sospets.business.models.entities.Especie;
 import lombok.Builder;
 import lombok.Data;
 

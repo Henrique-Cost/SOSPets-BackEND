@@ -2,23 +2,22 @@ package com.tcc.sospets.business.repositories;
 
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
 
-import com.tcc.sospets.business.models.entities.Especie;
+import com.tcc.sospets.business.models.entities.EspecieEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface IAnimalDomesticoRepositorio extends JpaRepository<AnimalDomestico, String>{
     List<AnimalDomestico> findByPorteAndEspecieAndCorAndAcessorioAndCondicaoAnimalAndLocalizacaoAndGenero(
-            String porte,
-            Especie especie,
-            String cor,
+            String porte, //enum
+            EspecieEnum especie,
+            String cor, //Enum
             String acessorio,
-            String condicaoAnimal,
+            String condicaoAnimal, //Enum
             String localizacao,
-            String genero
+            String genero // Boolean
     );
 
 

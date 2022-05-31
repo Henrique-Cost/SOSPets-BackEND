@@ -5,7 +5,7 @@ import com.tcc.sospets.business.models.dto.AnimalDomesticoResponse;
 import com.tcc.sospets.business.models.dto.PageAnimalDomesticoResponse;
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
 
-import com.tcc.sospets.business.models.entities.Especie;
+import com.tcc.sospets.business.models.entities.EspecieEnum;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,6 @@ public class AnimalDomesticoController {
                         .porte(animalDomestico.getPorte())
                         .cor(animalDomestico.getCor())
                         .acessorio(animalDomestico.getAcessorio())
-                        .especie(animalDomestico.getEspecie())
                         .condicaoAnimal(animalDomestico.getCondicaoAnimal())
                         .localizacao(animalDomestico.getLocalizacao())
                         .tipoUsuario(animalDomestico.getTipoUsuario())
@@ -53,7 +52,7 @@ public class AnimalDomesticoController {
 
     @GetMapping("/query")
     public List<AnimalDomestico> queryAnimal(@RequestParam("porte") String porte,
-                                             @RequestParam("especie") Especie especie,
+                                             @RequestParam("especie") EspecieEnum especie,
                                              @RequestParam("cor") String cor,
                                              @RequestParam("acessorio") String acessorio,
                                              @RequestParam("condicaoAnimal") String condicaoAnimal,

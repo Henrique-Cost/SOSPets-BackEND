@@ -24,11 +24,6 @@ public class AnimalDomestico {
     @JoinColumn(name = "usuarioId")
     private Usuario usuario;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "especieId")
-    private Especie especie;
-
-
 
     private String tipoUsuario;
     private String cor;

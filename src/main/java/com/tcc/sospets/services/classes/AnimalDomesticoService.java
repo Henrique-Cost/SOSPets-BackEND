@@ -2,17 +2,15 @@ package com.tcc.sospets.services.classes;
 
 import com.tcc.sospets.business.models.entities.AnimalDomestico;
 
-import com.tcc.sospets.business.models.entities.Especie;
+import com.tcc.sospets.business.models.entities.EspecieEnum;
 import com.tcc.sospets.business.repositories.IAnimalDomesticoRepositorio;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AnimalDomesticoService implements IAnimalDomesticoService {
@@ -30,7 +28,7 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
     @Override
     public List<AnimalDomestico> queryAnimal(
             String porte,
-            Especie especie,
+            EspecieEnum especie,
             String cor,
             String acessorio,
             String condicaoAnimal,
