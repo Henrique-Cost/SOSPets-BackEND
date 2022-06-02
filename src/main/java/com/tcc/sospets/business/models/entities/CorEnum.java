@@ -1,17 +1,17 @@
 package com.tcc.sospets.business.models.entities;
 
 public enum CorEnum {
-    preto,
-    branco,
-    laranja,
-    caramelo,
-    cinza,
-    marrom,
-    listrado,
-    frajola,
-    tigrado,
-    pardo,
-    bege,
-    creme,
-    dourado
+    Preto,
+    Branco,
+    Laranja,
+    Caramelo,
+    Cinza,
+    Marrom,
+    Listrado,
+    Frajola,
+    Tigrado,
+    Pardo,
+    Bege,
+    Creme,
+    Dourado
 }

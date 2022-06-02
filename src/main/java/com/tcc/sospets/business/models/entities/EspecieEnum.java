@@ -1,14 +1,14 @@
 package com.tcc.sospets.business.models.entities;
 
 public enum EspecieEnum {
-    papagaio,
-    hamster,
-    rato,
-    cavalo,
-    calopsita,
-    cachorro,
-    gato,
-    coelho,
-    porco,
-    cobra
+    Papagaio,
+    Hamster,
+    Rato,
+    Cavalo,
+    Calopsita,
+    Cachorro,
+    Gato,
+    Coelho,
+    Porco,
+    Cobra
 }

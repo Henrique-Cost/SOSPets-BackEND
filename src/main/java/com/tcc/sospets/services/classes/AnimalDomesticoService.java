@@ -25,24 +25,23 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
     }
 
     @Override
-    public List<AnimalDomestico> queryAnimal(
+    public List<AnimalDomestico> buscaAnimal(
             PorteEnum porte,
             EspecieEnum especie,
             CorEnum cor,
             String acessorio,
             CondicaoAnimalEnum condicaoAnimal,
-            String localizacao,
             GeneroEnum genero
-    ) {
+    )
+    {
         List<AnimalDomestico> queryAnimais =
-                animalDomesticoRepositorio.findByPorteAndEspecieAndCorAndAcessorioAndCondicaoAnimalAndLocalizacaoAndGenero(
-                        porte,
-                        especie,
-                        cor,
+                animalDomesticoRepositorio.findByPorteAndEspecieAndCorAndAcessorioAndCondicaoAnimalAndGenero(
+                        porte.name(),
+                        especie.name(),
+                        cor.name(),
                         acessorio,
-                        condicaoAnimal,
-                        localizacao,
-                        genero
+                        condicaoAnimal.name(),
+                        genero.name()
                 );
         return queryAnimais;
     }

@@ -23,7 +23,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/animalDomestico")
+@RequestMapping("/animaldomestico")
 public class AnimalDomesticoController {
 
     @Autowired
@@ -50,15 +50,14 @@ public class AnimalDomesticoController {
     }
 
     @GetMapping("/query")
-    public List<AnimalDomestico> queryAnimal(@RequestParam("porte") PorteEnum porte,
+    public List<AnimalDomestico> buscaAnimal(@RequestParam("porte") PorteEnum porte,
                                              @RequestParam("especie") EspecieEnum especie,
                                              @RequestParam("cor") CorEnum cor,
                                              @RequestParam("acessorio") String acessorio,
                                              @RequestParam("condicaoAnimal") CondicaoAnimalEnum condicaoAnimal,
-                                             @RequestParam("localizacao") String localizacao,
                                              @RequestParam("genero") GeneroEnum genero)
     {
-        return animalDomesticoService.queryAnimal(porte, especie, cor, acessorio, condicaoAnimal, localizacao, genero);
+        return animalDomesticoService.buscaAnimal(porte, especie, cor, acessorio, condicaoAnimal, genero);
     }
 
     @PostMapping
