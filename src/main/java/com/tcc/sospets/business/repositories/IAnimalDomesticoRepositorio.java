@@ -8,17 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IAnimalDomesticoRepositorio extends JpaRepository<AnimalDomestico, String>{
     @Modifying
-    @Query(value = "SELECT u FROM AnimalDomestico u WHERE u.porte = '%porte%'" +
-            " AND u.especie = '%especie%'" +
-            " AND u.cor = '%cor%'" +
-            " AND u.acessorio LIKE '%acessorio%'" +
-            " AND u.condicaoAnimal = '%condicaoAnimal%'" +
-            " And u.genero = '%genero%'")
-    List<AnimalDomestico> findByPorteAndEspecieAndCorAndAcessorioAndCondicaoAnimalAndGenero(
+    @Query("SELECT u FROM AnimalDomestico u WHERE u.porte = (porte)")
+    List<AnimalDomestico> buscaAnimal(
             String porte,
             String especie,
             String cor,
@@ -28,4 +24,13 @@ public interface IAnimalDomesticoRepositorio extends JpaRepository<AnimalDomesti
 
 
 }
+
+
+
+//+
+//" AND bd_sospets.animal_domestico.especie = '%especie%'" +
+//        " AND bd_sospets.animal_domestico.cor = '%cor%'" +
+//        " AND bd_sospets.animal_domestico.acessorio LIKE '%acessorio%'" +
+//        " AND bd_sospets.animal_domestico.condicao_animal = '%condicaoAnimal%'" +
+//        " AND bd_sospets.animal_domestico.genero = '%genero%'"
 

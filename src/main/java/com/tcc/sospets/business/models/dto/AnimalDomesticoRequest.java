@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class AnimalDomesticoRequest {
 
     PorteEnum porte;
+    Usuario usuario;
     EspecieEnum especie;
     CorEnum cor;
     TipoUsuarioEnum tipoUsuario;

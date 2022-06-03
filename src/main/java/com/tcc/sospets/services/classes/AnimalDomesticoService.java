@@ -1,8 +1,10 @@
 package com.tcc.sospets.services.classes;
 
+import com.tcc.sospets.business.models.dto.AnimalDomesticoRequest;
 import com.tcc.sospets.business.models.entities.*;
 
 import com.tcc.sospets.business.repositories.IAnimalDomesticoRepositorio;
+import com.tcc.sospets.business.repositories.IUsuarioRepositorio;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,10 +12,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnimalDomesticoService implements IAnimalDomesticoService {
 
+    @Autowired
+    IUsuarioRepositorio usuarioRepositorio;
     @Autowired
     IAnimalDomesticoRepositorio animalDomesticoRepositorio;
 
@@ -35,7 +40,7 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
     )
     {
         List<AnimalDomestico> queryAnimais =
-                animalDomesticoRepositorio.findByPorteAndEspecieAndCorAndAcessorioAndCondicaoAnimalAndGenero(
+                animalDomesticoRepositorio.buscaAnimal(
                         porte.name(),
                         especie.name(),
                         cor.name(),
@@ -48,7 +53,9 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
 
 
     @Override
-    public void saveAnimal(AnimalDomestico animalDomestico) {
+    public void saveAnimal(AnimalDomestico animalDomestico, User user) {
+        Usuario usuario = usuarioRepositorio.findByUser(user).orElseThrow();
+        animalDomestico.setUsuario(usuario);
         animalDomesticoRepositorio.save(animalDomestico);
     }
 

@@ -1,7 +1,10 @@
 package com.tcc.sospets.services.classes;
 
 import com.tcc.sospets.business.models.entities.Feedback;
+import com.tcc.sospets.business.models.entities.User;
+import com.tcc.sospets.business.models.entities.Usuario;
 import com.tcc.sospets.business.repositories.IFeedbackRepositorio;
+import com.tcc.sospets.business.repositories.IUsuarioRepositorio;
 import com.tcc.sospets.services.interfaces.IFeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +14,8 @@ import java.util.List;
 @Service
 public class FeedbackService implements IFeedbackService {
 
+    @Autowired
+    IUsuarioRepositorio usuarioRepositorio;
     @Autowired
     IFeedbackRepositorio feedbackRepositorio;
 
@@ -26,7 +31,9 @@ public class FeedbackService implements IFeedbackService {
     }
 
     @Override
-    public void saveFeedback(Feedback feedback) {
+    public void saveFeedback(Feedback feedback, User user) {
+        Usuario usuario = usuarioRepositorio.findByUser(user).orElseThrow();
+        feedback.setUsuario(usuario);
         feedbackRepositorio.save(feedback);
     }
 

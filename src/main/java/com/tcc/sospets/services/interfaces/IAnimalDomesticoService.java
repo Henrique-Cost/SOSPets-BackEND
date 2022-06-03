@@ -1,10 +1,12 @@
 package com.tcc.sospets.services.interfaces;
 
+import com.tcc.sospets.business.models.dto.AnimalDomesticoRequest;
 import com.tcc.sospets.business.models.entities.*;
 
 import org.springframework.data.domain.Page;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IAnimalDomesticoService {
 
@@ -18,7 +20,7 @@ public interface IAnimalDomesticoService {
                                           GeneroEnum genero);
 
 
-    void saveAnimal(AnimalDomestico animalDomestico);
+    void saveAnimal(AnimalDomestico animalDomestico, User user);
 
     void atualizaAnimal(AnimalDomestico animalDomestico, String animalDomesticoId);
 

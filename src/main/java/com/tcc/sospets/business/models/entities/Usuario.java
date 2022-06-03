@@ -26,6 +26,4 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    private String telefone;
-    private String celular;
 }
