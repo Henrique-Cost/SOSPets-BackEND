@@ -41,12 +41,12 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
     {
         List<AnimalDomestico> queryAnimais =
                 animalDomesticoRepositorio.buscaAnimal(
-                        porte.name(),
-                        especie.name(),
-                        cor.name(),
+                        porte,
+                        especie,
+                        cor,
                         acessorio,
-                        condicaoAnimal.name(),
-                        genero.name()
+                        condicaoAnimal,
+                        genero
                 );
         return queryAnimais;
     }
