@@ -4,6 +4,7 @@ package com.tcc.sospets.services.classes;
 import com.tcc.sospets.business.models.dto.FBRequest;
 import com.tcc.sospets.business.models.dto.FBResponse;
 import com.tcc.sospets.services.interfaces.IFirebaseService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Slf4j
 @Service
 public class FirebaseService implements IFirebaseService {
 
@@ -27,13 +29,15 @@ public class FirebaseService implements IFirebaseService {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<FBRequest> httpEntity = new HttpEntity<>(firebaseAuthRequest);
         System.out.println(registerUrl);
-        ResponseEntity<FBRequest> response =
-                restTemplate.exchange(registerUrl, HttpMethod.POST, httpEntity, FBRequest.class);
-
-        if (response.getStatusCodeValue() != 200) {
+        try {
+            ResponseEntity<FBRequest> response =
+                    restTemplate.exchange(registerUrl, HttpMethod.POST, httpEntity, FBRequest.class);
+            System.out.println(response.getBody());
+        } catch(Exception ex){
+            log.warn("Usuario com email {} nao pode ser cadastrado", firebaseAuthRequest.getEmail());
             throw new Exception("Nao pode registrar");
         }
-        System.out.println(response.getBody());
+
     }
 
     @Override
@@ -41,14 +45,19 @@ public class FirebaseService implements IFirebaseService {
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<FBRequest> httpEntity = new HttpEntity<>(firebaseAuthRequest);
-        ResponseEntity<FBResponse> response =
-                restTemplate.exchange(loginUrl, HttpMethod.POST, httpEntity, FBResponse.class);
-        if (response.getStatusCodeValue() != 200) {
+
+        try {
+            ResponseEntity<FBResponse> response =
+                    restTemplate.exchange(loginUrl, HttpMethod.POST, httpEntity, FBResponse.class);
+            System.out.println(response.getBody());
+            UsernamePasswordAuthenticationToken t = new UsernamePasswordAuthenticationToken(response.getBody().getEmail(), response.getBody().getIdToken());
+            SecurityContextHolder.getContext().setAuthentication(t);
+        } catch (Exception ex){
+            log.warn("Usuario com o email {} nao conseguiu logar", firebaseAuthRequest.getEmail());
             throw new Exception("Nao pode logar");
         }
 
-        System.out.println(response.getBody());
-        UsernamePasswordAuthenticationToken t = new UsernamePasswordAuthenticationToken(response.getBody().getEmail(), response.getBody().getIdToken());
-        SecurityContextHolder.getContext().setAuthentication(t);
+
+        ;
     }
 }

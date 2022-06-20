@@ -3,12 +3,10 @@ package com.tcc.sospets.business.repositories;
 import com.tcc.sospets.business.models.entities.*;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface IAnimalDomesticoRepositorio extends JpaRepository<AnimalDomestico, String>{

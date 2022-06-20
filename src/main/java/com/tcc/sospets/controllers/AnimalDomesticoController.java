@@ -7,8 +7,8 @@ import com.tcc.sospets.business.models.dto.PageAnimalDomesticoResponse;
 import com.tcc.sospets.business.models.entities.*;
 
 import com.tcc.sospets.business.repositories.IAnimalDomesticoRepositorio;
-import com.tcc.sospets.business.repositories.IUsuarioRepositorio;
 import com.tcc.sospets.services.interfaces.IAnimalDomesticoService;
+import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,10 +23,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("/animaldomestico")
 public class AnimalDomesticoController {
@@ -71,7 +71,7 @@ public class AnimalDomesticoController {
     @PostMapping
     public void saveAnimal(@RequestBody AnimalDomestico animalDomestico, Authentication authentication){
         animalDomesticoService.saveAnimal(animalDomestico, (User) authentication.getPrincipal());
-
+        log.info("Usuario {} cadastrou novo animal", User.class);
     }
 
     @GetMapping("/{animalDomesticoId}")
@@ -87,6 +87,7 @@ public class AnimalDomesticoController {
     @DeleteMapping("/{animalDomesticoId}")
     public void deletaAnimal(@PathVariable("animalDomesticoId") String animalDomesticoId){
         animalDomesticoService.deletaAnimal(animalDomesticoId);
+        log.info("deletou animal");
     }
 
     @PostMapping(value = "/comFoto", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
