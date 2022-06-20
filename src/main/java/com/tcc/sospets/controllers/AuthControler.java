@@ -40,8 +40,10 @@ public class AuthControler {
         firebaseService.register(fbRequest);
         String email = fbRequest.getEmail();
         String nome = fbRequest.getNome();
+        String telefone = fbRequest.getTelefone();
         User user = new User();
         user.setEmail(email);
+        user.setTelefone(telefone);
         user.setNome(nome);
         Usuario usuario = new Usuario();
         usuario.setUser(userRepositorio.save(user));

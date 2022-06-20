@@ -28,7 +28,7 @@ public class User implements UserDetails {
     private String email;
 
     private String password;
-
+    private String telefone;
     private String nome;
     private String fcmToken;
 

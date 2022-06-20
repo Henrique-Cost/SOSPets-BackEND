@@ -14,6 +14,7 @@ public class AnimalDomesticoResponse {
     TipoUsuarioEnum tipoUsuario;
     CondicaoAnimalEnum condicaoAnimal;
     GeneroEnum genero;
+    String telefone;
     String acessorio;
     String localizacao;
     String fotoAnimal;

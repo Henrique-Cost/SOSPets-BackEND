@@ -58,14 +58,24 @@ public class AnimalDomesticoController {
     }
 
     @GetMapping("/query")
-    public List<AnimalDomestico> buscaAnimal(@RequestParam("porte") PorteEnum porte,
+    public List<AnimalDomesticoResponse> buscaAnimal(@RequestParam("porte") PorteEnum porte,
                                                  @RequestParam("especie") EspecieEnum especie,
                                                  @RequestParam("cor") CorEnum cor,
                                                  @RequestParam("acessorio") String acessorio,
                                                  @RequestParam("condicaoAnimal") CondicaoAnimalEnum condicaoAnimal,
                                                  @RequestParam("genero") GeneroEnum genero)
     {
-        return animalDomesticoService.buscaAnimal(porte, especie, cor, acessorio, condicaoAnimal, genero);
+        List<AnimalDomestico> animais = animalDomesticoService.buscaAnimal(porte, especie, cor, acessorio, condicaoAnimal, genero);
+        return animais.stream().map(animalDomestico -> AnimalDomesticoResponse.builder()
+                .tipoUsuario(animalDomestico.getTipoUsuario())
+                .telefone(animalDomestico.getUsuario().getUser().getTelefone())
+                .especie(animalDomestico.getEspecie())
+                .cor(animalDomestico.getCor())
+                .fotoAnimal(animalDomestico.getFotoAnimal())
+                .genero(animalDomestico.getGenero())
+                .condicaoAnimal(animalDomestico.getCondicaoAnimal())
+                .acessorio(animalDomestico.getAcessorio())
+                .build()).collect(Collectors.toList());
     }
 
     @PostMapping
