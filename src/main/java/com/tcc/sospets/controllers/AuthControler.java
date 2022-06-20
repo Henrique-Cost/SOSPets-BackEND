@@ -10,6 +10,7 @@ import com.tcc.sospets.business.repositories.IUsuarioRepositorio;
 import com.tcc.sospets.services.classes.JwtUserDetailsService;
 import com.tcc.sospets.services.interfaces.IFirebaseService;
 import com.tcc.sospets.utils.JwtTokenUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequestMapping("/auth")
 public class AuthControler {
@@ -48,12 +50,14 @@ public class AuthControler {
         Usuario usuario = new Usuario();
         usuario.setUser(userRepositorio.save(user));
         usuarioRepositorio.save(usuario);
+        log.info("Usuario Salvo {}", usuario.getUsuarioId());
     }
         @PostMapping("/login")
         public TokenResponse autenticaUsuarioFirebase(@RequestBody FBRequest fbRequest) throws Exception {
             firebaseService.login(fbRequest);
             UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(fbRequest.getEmail());
             String token = jwtTokenUtil.generateToken(userDetails);
+            log.info("Usuario {} fez login",  );
             return new TokenResponse(token);
         }
 }

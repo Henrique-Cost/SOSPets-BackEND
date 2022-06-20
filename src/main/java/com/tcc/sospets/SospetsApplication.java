@@ -1,5 +1,6 @@
 package com.tcc.sospets;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-
+@Slf4j
 @SpringBootApplication
 public class SospetsApplication {
 
@@ -21,6 +22,7 @@ public class SospetsApplication {
 		 	Files.createDirectory(Paths.get("uploads"));
 		} catch (IOException e) {
 			e.printStackTrace();
+			log.info("Aplicação rodando....");
 		}
 	}
 	@Bean

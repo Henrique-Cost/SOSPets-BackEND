@@ -3,11 +3,13 @@ package com.tcc.sospets.services.classes;
 import com.tcc.sospets.business.models.entities.Usuario;
 import com.tcc.sospets.business.repositories.IUsuarioRepositorio;
 import com.tcc.sospets.services.interfaces.IUsuarioService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class UsuarioService implements IUsuarioService {
 
@@ -35,10 +37,12 @@ public class UsuarioService implements IUsuarioService {
     public void atualizaUsuario(Usuario usuario, String usuarioId) {
         Usuario usuarioAnterior = usuarioRepositorio.findById(usuarioId).orElse(null);
         usuarioRepositorio.save(usuarioAnterior);
+      log.info("atualizou usuario");
     }
 
     @Override
     public void deletaUsuario(String usuarioId) {
         usuarioRepositorio.deleteById(usuarioId);
+        log.info("deletou usuario");
     }
 }

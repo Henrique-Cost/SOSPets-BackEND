@@ -6,11 +6,13 @@ import com.tcc.sospets.business.models.entities.Usuario;
 import com.tcc.sospets.business.repositories.IFeedbackRepositorio;
 import com.tcc.sospets.business.repositories.IUsuarioRepositorio;
 import com.tcc.sospets.services.interfaces.IFeedbackService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class FeedbackService implements IFeedbackService {
 
@@ -26,8 +28,10 @@ public class FeedbackService implements IFeedbackService {
 
     @Override
     public Feedback pegaFeedback(String feedbackId) {
+        log.info("Usuario com o id fez um feedback");
         Feedback feedback = feedbackRepositorio.findById(feedbackId).orElse(null);
         return feedback;
+
     }
 
     @Override
