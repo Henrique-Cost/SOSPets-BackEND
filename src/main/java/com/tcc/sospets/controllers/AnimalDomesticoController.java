@@ -1,7 +1,6 @@
 package com.tcc.sospets.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tcc.sospets.business.models.dto.AnimalDomesticoRequest;
 import com.tcc.sospets.business.models.dto.AnimalDomesticoResponse;
 import com.tcc.sospets.business.models.dto.PageAnimalDomesticoResponse;
 import com.tcc.sospets.business.models.entities.*;
@@ -58,24 +57,14 @@ public class AnimalDomesticoController {
     }
 
     @GetMapping("/query")
-    public List<AnimalDomesticoResponse> buscaAnimal(@RequestParam("porte") PorteEnum porte,
-                                                 @RequestParam("especie") EspecieEnum especie,
-                                                 @RequestParam("cor") CorEnum cor,
-                                                 @RequestParam("acessorio") String acessorio,
-                                                 @RequestParam("condicaoAnimal") CondicaoAnimalEnum condicaoAnimal,
-                                                 @RequestParam("genero") GeneroEnum genero)
+    public List<AnimalDomestico> buscaAnimal(@RequestParam("porte") PorteEnum porte,
+                                             @RequestParam("especie") EspecieEnum especie,
+                                             @RequestParam("cor") CorEnum cor,
+                                             @RequestParam("acessorio") String acessorio,
+                                             @RequestParam("condicaoAnimal") CondicaoAnimalEnum condicaoAnimal,
+                                             @RequestParam("genero") GeneroEnum genero)
     {
-        List<AnimalDomestico> animais = animalDomesticoService.buscaAnimal(porte, especie, cor, acessorio, condicaoAnimal, genero);
-        return animais.stream().map(animalDomestico -> AnimalDomesticoResponse.builder()
-                .tipoUsuario(animalDomestico.getTipoUsuario())
-                .telefone(animalDomestico.getUsuario().getUser().getTelefone())
-                .especie(animalDomestico.getEspecie())
-                .cor(animalDomestico.getCor())
-                .fotoAnimal(animalDomestico.getFotoAnimal())
-                .genero(animalDomestico.getGenero())
-                .condicaoAnimal(animalDomestico.getCondicaoAnimal())
-                .acessorio(animalDomestico.getAcessorio())
-                .build()).collect(Collectors.toList());
+        return animalDomesticoService.queryAnimal(porte, especie, cor, acessorio, condicaoAnimal, genero);
     }
 
     @PostMapping

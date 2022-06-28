@@ -24,6 +24,6 @@ public class Feedback {
     @JoinColumn(name = "usuarioId")
     private Usuario usuario;
 
-    private String feedback;
+    private String sugestao;
 
 }

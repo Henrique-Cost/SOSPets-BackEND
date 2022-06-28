@@ -44,7 +44,7 @@ public class FeedbackService implements IFeedbackService {
     @Override
     public void atualizaFeedback(Feedback feedback, String feedbackId) {
         Feedback feedbackAnterior = feedbackRepositorio.findById(feedbackId).orElse(null);
-        feedbackAnterior.setFeedback(feedback.getFeedback());
+        feedbackAnterior.setSugestao(feedback.getSugestao());
         feedbackRepositorio.save(feedback);
     }
 

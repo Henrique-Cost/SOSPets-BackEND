@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tcc.sospets.business.models.entities.User;
 import com.tcc.sospets.services.classes.JwtUserDetailsService;
 import com.tcc.sospets.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,12 +48,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
         // Once we get the token validate it.
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+            User user = this.jwtUserDetailsService.loadUserByUsername(username);
             // if token is valid configure Spring Security to manually set
             // authentication
-            if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
+            if (jwtTokenUtil.validateToken(jwtToken, user)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
+                        user, null, user.getAuthorities());
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 // After setting the Authentication in the context, we specify

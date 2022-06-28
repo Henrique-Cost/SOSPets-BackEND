@@ -57,9 +57,11 @@ public class AuthControler {
             firebaseService.login(fbRequest);
             UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(fbRequest.getEmail());
             String token = jwtTokenUtil.generateToken(userDetails);
-            log.info("Usuario {} fez login",  );
+            log.info("Usuario {} fez login");
             return new TokenResponse(token);
         }
+
+
 }
 
 

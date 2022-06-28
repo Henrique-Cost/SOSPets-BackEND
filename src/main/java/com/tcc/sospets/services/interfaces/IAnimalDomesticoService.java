@@ -12,7 +12,7 @@ public interface IAnimalDomesticoService {
 
     Page<AnimalDomestico> getAnimaisDomesticos(Integer page, Integer pageSize);
 
-    List<AnimalDomestico> buscaAnimal(PorteEnum porte,
+    List<AnimalDomestico> queryAnimal(PorteEnum porte,
                                           EspecieEnum especie,
                                           CorEnum cor,
                                           String acessorio,

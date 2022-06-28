@@ -1,5 +1,6 @@
 package com.tcc.sospets.services.classes;
 
+import com.tcc.sospets.business.models.entities.User;
 import com.tcc.sospets.business.repositories.IUserRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +15,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     IUserRepositorio userRepositorio;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public User loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepositorio.findByEmail(email).orElseThrow();
 
     }

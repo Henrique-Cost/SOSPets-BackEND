@@ -30,7 +30,7 @@ public class AnimalDomesticoService implements IAnimalDomesticoService {
     }
 
     @Override
-    public List<AnimalDomestico> buscaAnimal(
+    public List<AnimalDomestico> queryAnimal(
             PorteEnum porte,
             EspecieEnum especie,
             CorEnum cor,

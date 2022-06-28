@@ -21,7 +21,7 @@ public class SospetsApplication {
 		try {
 		 	Files.createDirectory(Paths.get("uploads"));
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			log.info("Aplicação rodando....");
 		}
 	}
