@@ -1,5 +1,5 @@
 package com.tcc.sospets.services.interfaces;
-;
+
 import com.tcc.sospets.business.models.entities.Usuario;
 
 import java.util.List;

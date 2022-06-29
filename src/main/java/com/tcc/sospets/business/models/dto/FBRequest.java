@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class FBRequest {
 
     private String email;
+    private String nome;
+    private String telefone;
     private String password;
     private boolean returnSecureToken;
 

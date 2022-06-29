@@ -15,33 +15,22 @@ import javax.persistence.*;
 @Table(name = "animal_domestico")
 public class AnimalDomestico {
     @Id
-    @GeneratedValue(generator = "uuid")
+    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
     private String animalDomesticoId;
 
-    //
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuarioId", nullable = false)
+    @JoinColumn(name = "usuarioId")
     private Usuario usuario;
 
-    //
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "especieId", nullable = false)
-    private Especie especie;
-
-    @Embedded
-    private CorAnimal corAnimal;
-
-    //
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tipoUsuarioId", nullable = false)
-    private TipoUsuarioClasse tipoUsuarioClasse;
-
-    private Float peso;
-    private String Genero;
+    private EspecieEnum especie;
+    private CondicaoAnimalEnum condicaoAnimal;
+    private CorEnum cor;
+    private GeneroEnum genero;
+    private PorteEnum porte;
+    private TipoUsuarioEnum tipoUsuario;
     private String acessorio;
-    private String condicaoAnimal;
     private String localizacao;
     private String fotoAnimal;
 }
